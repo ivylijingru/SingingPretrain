@@ -25,6 +25,9 @@ class TranscriptionDataModule(pl.LightningDataModule):
     def train_dataloader(self):
         return Data.DataLoader(self.train_dataset, batch_size=self.batch_size, shuffle=self.train_shuffle, num_workers=self.num_workers)
 
+    def val_dataloader(self):
+        return Data.DataLoader(self.test_dataset, batch_size=self.batch_size, num_workers=self.num_workers)
+
     def test_dataloader(self):
         return Data.DataLoader(self.test_dataset, batch_size=self.batch_size, num_workers=self.num_workers)
 

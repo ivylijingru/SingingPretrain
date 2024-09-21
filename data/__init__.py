@@ -1,1 +1,1 @@
-from .datamodule import TranscriptionDataset
+from .datamodule import TranscriptionDataModule
