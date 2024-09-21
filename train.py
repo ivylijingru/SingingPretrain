@@ -30,7 +30,7 @@ def train(config):
     trainer = pl.Trainer(
         **trainer_cfg["args"],
         logger=TensorBoardLogger(**trainer_cfg["logger"]),
-        callbacks=callbacks
+        # callbacks=callbacks
     )
 
     trainer.fit(model, datamodule=datamodule)

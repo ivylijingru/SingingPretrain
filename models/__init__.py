@@ -51,7 +51,7 @@ class SVTDownstreamModel(pl.LightningModule):
         loss_dict = dict()
 
         model_output = self.model(mert)
-        loss_dict["combine"] = self.loss_fn(model_output, y)
+        loss_dict["loss/total"] = self.loss_fn(model_output, y).mean()
 
         return loss_dict
 

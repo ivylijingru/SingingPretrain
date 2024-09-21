@@ -9,14 +9,16 @@ class TranscriptionDataModule(pl.LightningDataModule):
         self,
         train_manifest_path,
         test_manifest_path,
+        slice_sec,
+        token_rate,
         batch_size,
         train_shuffle,
         num_workers,
     ) -> None:
         super().__init__()
 
-        self.train_dataset = TranscriptionDataset(train_manifest_path)
-        self.test_dataset = TranscriptionDataset(test_manifest_path)
+        self.train_dataset = TranscriptionDataset(train_manifest_path, slice_sec, token_rate)
+        self.test_dataset = TranscriptionDataset(test_manifest_path, slice_sec, token_rate)
 
         self.batch_size = batch_size
         self.train_shuffle = train_shuffle

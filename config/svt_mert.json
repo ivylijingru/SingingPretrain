@@ -1,27 +1,24 @@
 {
     "seed": 1223,
-    "data":
-    {
-	"train_manifest_path": "data_json/mirst500-train.json",
-	"test_manifest_path": "data_json/mirst500-test.json",
+    "data": {
+        "train_manifest_path": "data_json/mirst500-train.json",
+        "test_manifest_path": "data_json/mirst500-test.json",
+        "slice_sec": 5,
+        "token_rate": 50,
         "batch_size": 16,
         "train_shuffle": true,
         "num_workers": 16
     },
-    "model":
-    {
-  	"mlp":
-	{
-	    "args": 
-	    {
-            	"input_dim": 768,
-            	"num_classes": 12,
-		"hidden_layer_size": 512,
-		"dropout_prob": 0.5
+    "model": {
+        "mlp": {
+            "args": {
+                "input_dim": 768,
+                "num_classes": 20,
+                "hidden_layer_size": 512,
+                "dropout_prob": 0.5
             }
-	},
-	"optim":
-	{
+        },
+        "optim": {
             "optimizer": {
                 "name": "Adam",
                 "args": {
@@ -38,30 +35,28 @@
                 }
             }
         },
-	"loss":
-	{
-	    "args": {
-		"onset_weight": 15.0,
-		"silence_weight": 1.0
-	    }
-	}
+        "loss": {
+            "args": {
+                "onset_weight": 15.0,
+                "silence_weight": 1.0
+            }
+        }
     },
-    "trainer":
-    {
-        "args":
-        {
+    "trainer": {
+        "args": {
             "max_epochs": -1,
             "max_steps": 100000,
             "gradient_clip_val": 1.0,
             "num_sanity_val_steps": -1,
             "accelerator": "gpu",
-            "devices": [0],
+            "devices": [
+                0
+            ],
             "deterministic": true,
             "check_val_every_n_epoch": 1,
             "log_every_n_steps": 50
         },
-	"logger":
-        {
+        "logger": {
             "save_dir": "work_dir_mert",
             "name": "log"
         }
