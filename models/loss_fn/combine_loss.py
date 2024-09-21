@@ -8,10 +8,10 @@ class CombineLoss(nn.Module):
         onset_weight: float = 15.0,
         silence_weight: float = 1.0,
     ):
-        self.onset_loss_fn = nn.BCELoss()
-        self.silence_loss_fn = nn.BCELoss()
-        self.pitch_class_loss_fn = nn.CrossEntropyLoss()
-        self.octave_loss_fn = nn.CrossEntropyLoss()
+        self.onset_loss_fn = nn.BCELoss(reduction="none")
+        self.silence_loss_fn = nn.BCELoss(reduction="none")
+        self.pitch_class_loss_fn = nn.CrossEntropyLoss(reduction="none")
+        self.octave_loss_fn = nn.CrossEntropyLoss(reduction="none")
 
         self.onset_weight = onset_loss_weight
         self.silence_weight = silence_weight

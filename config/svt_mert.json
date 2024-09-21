@@ -1,0 +1,49 @@
+{
+    "seed": 1223,
+    "data":
+    {
+	"train_manifest_path": "data_json/mirst500-train.json",
+	"test_manifest_path": "data_json/mirst500-test.json",
+        "batch_size": 16,
+        "train_shuffle": true,
+        "num_workers": 16
+    },
+    "model":
+    {
+  	"mlp":
+	{
+	    "args": 
+	    {
+            	"input_dim": 768,
+            	"num_classes": 12,
+		"hidden_layer_size": 512,
+		"dropout_prob": 0.5
+            }
+	},
+	"optim":
+	{
+            "optimizer": {
+                "name": "Adam",
+                "args": {
+                    "lr": 0.0001,
+                    "weight_decay": 0.0001
+                }
+            },
+            "scheduler": {
+                "name": "ReduceLROnPlateau",
+                "monitor": "val/loss/total",
+                "args": {
+                    "factor": 0.2,
+                    "patience": 5
+                }
+            }
+        },
+	"loss":
+	{
+	    "args": {
+		"onset_weight": 15.0,
+		"silence_weight": 1.0
+	    }
+	}
+    }
+}
