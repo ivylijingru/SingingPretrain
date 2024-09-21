@@ -1,0 +1,4 @@
+*.pyc
+*.npy
+
+work_dir_mert/
