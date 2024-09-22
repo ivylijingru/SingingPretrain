@@ -37,8 +37,7 @@
         },
         "loss": {
             "args": {
-                "onset_weight": 15.0,
-                "silence_weight": 1.0
+                "onset_pos_weight": 15.0
             }
         }
     },
