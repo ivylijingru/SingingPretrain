@@ -10,17 +10,20 @@ import pandas as pd
 
 
 def parse_mirst500(data_split, output_dir):
+    vocal_dir = "../singing_transcription_ICASSP2021"
     label_dir = "MERT-label"
     feature_dir = "MERT-v0-public_feature_default"
 
     data_list = []
     for the_dir in tqdm(os.listdir(os.path.join(label_dir, data_split))):
         clip_id = int(the_dir)
+        vocal_path = os.path.join(vocal_dir, data_split, the_dir, "Vocals.wav")
         mert_path = os.path.join(feature_dir, data_split, the_dir, "Vocals.wav.npy")
         label_path = os.path.join(label_dir, data_split, the_dir, "labels.npy")
 
         data = dict(
             clip_id=clip_id,
+            vocal_path=vocal_path,
             label_path=label_path,
             mert_path=mert_path,
         )

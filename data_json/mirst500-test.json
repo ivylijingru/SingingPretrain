@@ -1,100 +1,100 @@
-{"clip_id": 463, "label_path": "MERT-label/test/463/labels.npy", "mert_path": "MERT-v0-public_feature_default/test/463/Vocals.wav.npy"}
-{"clip_id": 414, "label_path": "MERT-label/test/414/labels.npy", "mert_path": "MERT-v0-public_feature_default/test/414/Vocals.wav.npy"}
-{"clip_id": 493, "label_path": "MERT-label/test/493/labels.npy", "mert_path": "MERT-v0-public_feature_default/test/493/Vocals.wav.npy"}
-{"clip_id": 415, "label_path": "MERT-label/test/415/labels.npy", "mert_path": "MERT-v0-public_feature_default/test/415/Vocals.wav.npy"}
-{"clip_id": 499, "label_path": "MERT-label/test/499/labels.npy", "mert_path": "MERT-v0-public_feature_default/test/499/Vocals.wav.npy"}
-{"clip_id": 442, "label_path": "MERT-label/test/442/labels.npy", "mert_path": "MERT-v0-public_feature_default/test/442/Vocals.wav.npy"}
-{"clip_id": 426, "label_path": "MERT-label/test/426/labels.npy", "mert_path": "MERT-v0-public_feature_default/test/426/Vocals.wav.npy"}
-{"clip_id": 437, "label_path": "MERT-label/test/437/labels.npy", "mert_path": "MERT-v0-public_feature_default/test/437/Vocals.wav.npy"}
-{"clip_id": 417, "label_path": "MERT-label/test/417/labels.npy", "mert_path": "MERT-v0-public_feature_default/test/417/Vocals.wav.npy"}
-{"clip_id": 488, "label_path": "MERT-label/test/488/labels.npy", "mert_path": "MERT-v0-public_feature_default/test/488/Vocals.wav.npy"}
-{"clip_id": 418, "label_path": "MERT-label/test/418/labels.npy", "mert_path": "MERT-v0-public_feature_default/test/418/Vocals.wav.npy"}
-{"clip_id": 483, "label_path": "MERT-label/test/483/labels.npy", "mert_path": "MERT-v0-public_feature_default/test/483/Vocals.wav.npy"}
-{"clip_id": 498, "label_path": "MERT-label/test/498/labels.npy", "mert_path": "MERT-v0-public_feature_default/test/498/Vocals.wav.npy"}
-{"clip_id": 496, "label_path": "MERT-label/test/496/labels.npy", "mert_path": "MERT-v0-public_feature_default/test/496/Vocals.wav.npy"}
-{"clip_id": 435, "label_path": "MERT-label/test/435/labels.npy", "mert_path": "MERT-v0-public_feature_default/test/435/Vocals.wav.npy"}
-{"clip_id": 423, "label_path": "MERT-label/test/423/labels.npy", "mert_path": "MERT-v0-public_feature_default/test/423/Vocals.wav.npy"}
-{"clip_id": 441, "label_path": "MERT-label/test/441/labels.npy", "mert_path": "MERT-v0-public_feature_default/test/441/Vocals.wav.npy"}
-{"clip_id": 450, "label_path": "MERT-label/test/450/labels.npy", "mert_path": "MERT-v0-public_feature_default/test/450/Vocals.wav.npy"}
-{"clip_id": 485, "label_path": "MERT-label/test/485/labels.npy", "mert_path": "MERT-v0-public_feature_default/test/485/Vocals.wav.npy"}
-{"clip_id": 448, "label_path": "MERT-label/test/448/labels.npy", "mert_path": "MERT-v0-public_feature_default/test/448/Vocals.wav.npy"}
-{"clip_id": 421, "label_path": "MERT-label/test/421/labels.npy", "mert_path": "MERT-v0-public_feature_default/test/421/Vocals.wav.npy"}
-{"clip_id": 413, "label_path": "MERT-label/test/413/labels.npy", "mert_path": "MERT-v0-public_feature_default/test/413/Vocals.wav.npy"}
-{"clip_id": 440, "label_path": "MERT-label/test/440/labels.npy", "mert_path": "MERT-v0-public_feature_default/test/440/Vocals.wav.npy"}
-{"clip_id": 446, "label_path": "MERT-label/test/446/labels.npy", "mert_path": "MERT-v0-public_feature_default/test/446/Vocals.wav.npy"}
-{"clip_id": 472, "label_path": "MERT-label/test/472/labels.npy", "mert_path": "MERT-v0-public_feature_default/test/472/Vocals.wav.npy"}
-{"clip_id": 461, "label_path": "MERT-label/test/461/labels.npy", "mert_path": "MERT-v0-public_feature_default/test/461/Vocals.wav.npy"}
-{"clip_id": 471, "label_path": "MERT-label/test/471/labels.npy", "mert_path": "MERT-v0-public_feature_default/test/471/Vocals.wav.npy"}
-{"clip_id": 434, "label_path": "MERT-label/test/434/labels.npy", "mert_path": "MERT-v0-public_feature_default/test/434/Vocals.wav.npy"}
-{"clip_id": 462, "label_path": "MERT-label/test/462/labels.npy", "mert_path": "MERT-v0-public_feature_default/test/462/Vocals.wav.npy"}
-{"clip_id": 433, "label_path": "MERT-label/test/433/labels.npy", "mert_path": "MERT-v0-public_feature_default/test/433/Vocals.wav.npy"}
-{"clip_id": 479, "label_path": "MERT-label/test/479/labels.npy", "mert_path": "MERT-v0-public_feature_default/test/479/Vocals.wav.npy"}
-{"clip_id": 401, "label_path": "MERT-label/test/401/labels.npy", "mert_path": "MERT-v0-public_feature_default/test/401/Vocals.wav.npy"}
-{"clip_id": 443, "label_path": "MERT-label/test/443/labels.npy", "mert_path": "MERT-v0-public_feature_default/test/443/Vocals.wav.npy"}
-{"clip_id": 482, "label_path": "MERT-label/test/482/labels.npy", "mert_path": "MERT-v0-public_feature_default/test/482/Vocals.wav.npy"}
-{"clip_id": 469, "label_path": "MERT-label/test/469/labels.npy", "mert_path": "MERT-v0-public_feature_default/test/469/Vocals.wav.npy"}
-{"clip_id": 477, "label_path": "MERT-label/test/477/labels.npy", "mert_path": "MERT-v0-public_feature_default/test/477/Vocals.wav.npy"}
-{"clip_id": 489, "label_path": "MERT-label/test/489/labels.npy", "mert_path": "MERT-v0-public_feature_default/test/489/Vocals.wav.npy"}
-{"clip_id": 474, "label_path": "MERT-label/test/474/labels.npy", "mert_path": "MERT-v0-public_feature_default/test/474/Vocals.wav.npy"}
-{"clip_id": 436, "label_path": "MERT-label/test/436/labels.npy", "mert_path": "MERT-v0-public_feature_default/test/436/Vocals.wav.npy"}
-{"clip_id": 408, "label_path": "MERT-label/test/408/labels.npy", "mert_path": "MERT-v0-public_feature_default/test/408/Vocals.wav.npy"}
-{"clip_id": 447, "label_path": "MERT-label/test/447/labels.npy", "mert_path": "MERT-v0-public_feature_default/test/447/Vocals.wav.npy"}
-{"clip_id": 473, "label_path": "MERT-label/test/473/labels.npy", "mert_path": "MERT-v0-public_feature_default/test/473/Vocals.wav.npy"}
-{"clip_id": 492, "label_path": "MERT-label/test/492/labels.npy", "mert_path": "MERT-v0-public_feature_default/test/492/Vocals.wav.npy"}
-{"clip_id": 409, "label_path": "MERT-label/test/409/labels.npy", "mert_path": "MERT-v0-public_feature_default/test/409/Vocals.wav.npy"}
-{"clip_id": 465, "label_path": "MERT-label/test/465/labels.npy", "mert_path": "MERT-v0-public_feature_default/test/465/Vocals.wav.npy"}
-{"clip_id": 407, "label_path": "MERT-label/test/407/labels.npy", "mert_path": "MERT-v0-public_feature_default/test/407/Vocals.wav.npy"}
-{"clip_id": 491, "label_path": "MERT-label/test/491/labels.npy", "mert_path": "MERT-v0-public_feature_default/test/491/Vocals.wav.npy"}
-{"clip_id": 497, "label_path": "MERT-label/test/497/labels.npy", "mert_path": "MERT-v0-public_feature_default/test/497/Vocals.wav.npy"}
-{"clip_id": 431, "label_path": "MERT-label/test/431/labels.npy", "mert_path": "MERT-v0-public_feature_default/test/431/Vocals.wav.npy"}
-{"clip_id": 404, "label_path": "MERT-label/test/404/labels.npy", "mert_path": "MERT-v0-public_feature_default/test/404/Vocals.wav.npy"}
-{"clip_id": 402, "label_path": "MERT-label/test/402/labels.npy", "mert_path": "MERT-v0-public_feature_default/test/402/Vocals.wav.npy"}
-{"clip_id": 468, "label_path": "MERT-label/test/468/labels.npy", "mert_path": "MERT-v0-public_feature_default/test/468/Vocals.wav.npy"}
-{"clip_id": 453, "label_path": "MERT-label/test/453/labels.npy", "mert_path": "MERT-v0-public_feature_default/test/453/Vocals.wav.npy"}
-{"clip_id": 419, "label_path": "MERT-label/test/419/labels.npy", "mert_path": "MERT-v0-public_feature_default/test/419/Vocals.wav.npy"}
-{"clip_id": 452, "label_path": "MERT-label/test/452/labels.npy", "mert_path": "MERT-v0-public_feature_default/test/452/Vocals.wav.npy"}
-{"clip_id": 430, "label_path": "MERT-label/test/430/labels.npy", "mert_path": "MERT-v0-public_feature_default/test/430/Vocals.wav.npy"}
-{"clip_id": 422, "label_path": "MERT-label/test/422/labels.npy", "mert_path": "MERT-v0-public_feature_default/test/422/Vocals.wav.npy"}
-{"clip_id": 411, "label_path": "MERT-label/test/411/labels.npy", "mert_path": "MERT-v0-public_feature_default/test/411/Vocals.wav.npy"}
-{"clip_id": 467, "label_path": "MERT-label/test/467/labels.npy", "mert_path": "MERT-v0-public_feature_default/test/467/Vocals.wav.npy"}
-{"clip_id": 478, "label_path": "MERT-label/test/478/labels.npy", "mert_path": "MERT-v0-public_feature_default/test/478/Vocals.wav.npy"}
-{"clip_id": 470, "label_path": "MERT-label/test/470/labels.npy", "mert_path": "MERT-v0-public_feature_default/test/470/Vocals.wav.npy"}
-{"clip_id": 403, "label_path": "MERT-label/test/403/labels.npy", "mert_path": "MERT-v0-public_feature_default/test/403/Vocals.wav.npy"}
-{"clip_id": 424, "label_path": "MERT-label/test/424/labels.npy", "mert_path": "MERT-v0-public_feature_default/test/424/Vocals.wav.npy"}
-{"clip_id": 459, "label_path": "MERT-label/test/459/labels.npy", "mert_path": "MERT-v0-public_feature_default/test/459/Vocals.wav.npy"}
-{"clip_id": 444, "label_path": "MERT-label/test/444/labels.npy", "mert_path": "MERT-v0-public_feature_default/test/444/Vocals.wav.npy"}
-{"clip_id": 460, "label_path": "MERT-label/test/460/labels.npy", "mert_path": "MERT-v0-public_feature_default/test/460/Vocals.wav.npy"}
-{"clip_id": 464, "label_path": "MERT-label/test/464/labels.npy", "mert_path": "MERT-v0-public_feature_default/test/464/Vocals.wav.npy"}
-{"clip_id": 455, "label_path": "MERT-label/test/455/labels.npy", "mert_path": "MERT-v0-public_feature_default/test/455/Vocals.wav.npy"}
-{"clip_id": 495, "label_path": "MERT-label/test/495/labels.npy", "mert_path": "MERT-v0-public_feature_default/test/495/Vocals.wav.npy"}
-{"clip_id": 484, "label_path": "MERT-label/test/484/labels.npy", "mert_path": "MERT-v0-public_feature_default/test/484/Vocals.wav.npy"}
-{"clip_id": 457, "label_path": "MERT-label/test/457/labels.npy", "mert_path": "MERT-v0-public_feature_default/test/457/Vocals.wav.npy"}
-{"clip_id": 420, "label_path": "MERT-label/test/420/labels.npy", "mert_path": "MERT-v0-public_feature_default/test/420/Vocals.wav.npy"}
-{"clip_id": 405, "label_path": "MERT-label/test/405/labels.npy", "mert_path": "MERT-v0-public_feature_default/test/405/Vocals.wav.npy"}
-{"clip_id": 454, "label_path": "MERT-label/test/454/labels.npy", "mert_path": "MERT-v0-public_feature_default/test/454/Vocals.wav.npy"}
-{"clip_id": 486, "label_path": "MERT-label/test/486/labels.npy", "mert_path": "MERT-v0-public_feature_default/test/486/Vocals.wav.npy"}
-{"clip_id": 475, "label_path": "MERT-label/test/475/labels.npy", "mert_path": "MERT-v0-public_feature_default/test/475/Vocals.wav.npy"}
-{"clip_id": 425, "label_path": "MERT-label/test/425/labels.npy", "mert_path": "MERT-v0-public_feature_default/test/425/Vocals.wav.npy"}
-{"clip_id": 429, "label_path": "MERT-label/test/429/labels.npy", "mert_path": "MERT-v0-public_feature_default/test/429/Vocals.wav.npy"}
-{"clip_id": 416, "label_path": "MERT-label/test/416/labels.npy", "mert_path": "MERT-v0-public_feature_default/test/416/Vocals.wav.npy"}
-{"clip_id": 490, "label_path": "MERT-label/test/490/labels.npy", "mert_path": "MERT-v0-public_feature_default/test/490/Vocals.wav.npy"}
-{"clip_id": 476, "label_path": "MERT-label/test/476/labels.npy", "mert_path": "MERT-v0-public_feature_default/test/476/Vocals.wav.npy"}
-{"clip_id": 445, "label_path": "MERT-label/test/445/labels.npy", "mert_path": "MERT-v0-public_feature_default/test/445/Vocals.wav.npy"}
-{"clip_id": 412, "label_path": "MERT-label/test/412/labels.npy", "mert_path": "MERT-v0-public_feature_default/test/412/Vocals.wav.npy"}
-{"clip_id": 494, "label_path": "MERT-label/test/494/labels.npy", "mert_path": "MERT-v0-public_feature_default/test/494/Vocals.wav.npy"}
-{"clip_id": 406, "label_path": "MERT-label/test/406/labels.npy", "mert_path": "MERT-v0-public_feature_default/test/406/Vocals.wav.npy"}
-{"clip_id": 481, "label_path": "MERT-label/test/481/labels.npy", "mert_path": "MERT-v0-public_feature_default/test/481/Vocals.wav.npy"}
-{"clip_id": 449, "label_path": "MERT-label/test/449/labels.npy", "mert_path": "MERT-v0-public_feature_default/test/449/Vocals.wav.npy"}
-{"clip_id": 427, "label_path": "MERT-label/test/427/labels.npy", "mert_path": "MERT-v0-public_feature_default/test/427/Vocals.wav.npy"}
-{"clip_id": 500, "label_path": "MERT-label/test/500/labels.npy", "mert_path": "MERT-v0-public_feature_default/test/500/Vocals.wav.npy"}
-{"clip_id": 432, "label_path": "MERT-label/test/432/labels.npy", "mert_path": "MERT-v0-public_feature_default/test/432/Vocals.wav.npy"}
-{"clip_id": 451, "label_path": "MERT-label/test/451/labels.npy", "mert_path": "MERT-v0-public_feature_default/test/451/Vocals.wav.npy"}
-{"clip_id": 456, "label_path": "MERT-label/test/456/labels.npy", "mert_path": "MERT-v0-public_feature_default/test/456/Vocals.wav.npy"}
-{"clip_id": 480, "label_path": "MERT-label/test/480/labels.npy", "mert_path": "MERT-v0-public_feature_default/test/480/Vocals.wav.npy"}
-{"clip_id": 439, "label_path": "MERT-label/test/439/labels.npy", "mert_path": "MERT-v0-public_feature_default/test/439/Vocals.wav.npy"}
-{"clip_id": 410, "label_path": "MERT-label/test/410/labels.npy", "mert_path": "MERT-v0-public_feature_default/test/410/Vocals.wav.npy"}
-{"clip_id": 466, "label_path": "MERT-label/test/466/labels.npy", "mert_path": "MERT-v0-public_feature_default/test/466/Vocals.wav.npy"}
-{"clip_id": 487, "label_path": "MERT-label/test/487/labels.npy", "mert_path": "MERT-v0-public_feature_default/test/487/Vocals.wav.npy"}
-{"clip_id": 438, "label_path": "MERT-label/test/438/labels.npy", "mert_path": "MERT-v0-public_feature_default/test/438/Vocals.wav.npy"}
-{"clip_id": 428, "label_path": "MERT-label/test/428/labels.npy", "mert_path": "MERT-v0-public_feature_default/test/428/Vocals.wav.npy"}
-{"clip_id": 458, "label_path": "MERT-label/test/458/labels.npy", "mert_path": "MERT-v0-public_feature_default/test/458/Vocals.wav.npy"}
+{"clip_id": 463, "vocal_path": "../singing_transcription_ICASSP2021/test/463/Vocals.wav", "label_path": "MERT-label/test/463/labels.npy", "mert_path": "MERT-v0-public_feature_default/test/463/Vocals.wav.npy"}
+{"clip_id": 414, "vocal_path": "../singing_transcription_ICASSP2021/test/414/Vocals.wav", "label_path": "MERT-label/test/414/labels.npy", "mert_path": "MERT-v0-public_feature_default/test/414/Vocals.wav.npy"}
+{"clip_id": 493, "vocal_path": "../singing_transcription_ICASSP2021/test/493/Vocals.wav", "label_path": "MERT-label/test/493/labels.npy", "mert_path": "MERT-v0-public_feature_default/test/493/Vocals.wav.npy"}
+{"clip_id": 415, "vocal_path": "../singing_transcription_ICASSP2021/test/415/Vocals.wav", "label_path": "MERT-label/test/415/labels.npy", "mert_path": "MERT-v0-public_feature_default/test/415/Vocals.wav.npy"}
+{"clip_id": 499, "vocal_path": "../singing_transcription_ICASSP2021/test/499/Vocals.wav", "label_path": "MERT-label/test/499/labels.npy", "mert_path": "MERT-v0-public_feature_default/test/499/Vocals.wav.npy"}
+{"clip_id": 442, "vocal_path": "../singing_transcription_ICASSP2021/test/442/Vocals.wav", "label_path": "MERT-label/test/442/labels.npy", "mert_path": "MERT-v0-public_feature_default/test/442/Vocals.wav.npy"}
+{"clip_id": 426, "vocal_path": "../singing_transcription_ICASSP2021/test/426/Vocals.wav", "label_path": "MERT-label/test/426/labels.npy", "mert_path": "MERT-v0-public_feature_default/test/426/Vocals.wav.npy"}
+{"clip_id": 437, "vocal_path": "../singing_transcription_ICASSP2021/test/437/Vocals.wav", "label_path": "MERT-label/test/437/labels.npy", "mert_path": "MERT-v0-public_feature_default/test/437/Vocals.wav.npy"}
+{"clip_id": 417, "vocal_path": "../singing_transcription_ICASSP2021/test/417/Vocals.wav", "label_path": "MERT-label/test/417/labels.npy", "mert_path": "MERT-v0-public_feature_default/test/417/Vocals.wav.npy"}
+{"clip_id": 488, "vocal_path": "../singing_transcription_ICASSP2021/test/488/Vocals.wav", "label_path": "MERT-label/test/488/labels.npy", "mert_path": "MERT-v0-public_feature_default/test/488/Vocals.wav.npy"}
+{"clip_id": 418, "vocal_path": "../singing_transcription_ICASSP2021/test/418/Vocals.wav", "label_path": "MERT-label/test/418/labels.npy", "mert_path": "MERT-v0-public_feature_default/test/418/Vocals.wav.npy"}
+{"clip_id": 483, "vocal_path": "../singing_transcription_ICASSP2021/test/483/Vocals.wav", "label_path": "MERT-label/test/483/labels.npy", "mert_path": "MERT-v0-public_feature_default/test/483/Vocals.wav.npy"}
+{"clip_id": 498, "vocal_path": "../singing_transcription_ICASSP2021/test/498/Vocals.wav", "label_path": "MERT-label/test/498/labels.npy", "mert_path": "MERT-v0-public_feature_default/test/498/Vocals.wav.npy"}
+{"clip_id": 496, "vocal_path": "../singing_transcription_ICASSP2021/test/496/Vocals.wav", "label_path": "MERT-label/test/496/labels.npy", "mert_path": "MERT-v0-public_feature_default/test/496/Vocals.wav.npy"}
+{"clip_id": 435, "vocal_path": "../singing_transcription_ICASSP2021/test/435/Vocals.wav", "label_path": "MERT-label/test/435/labels.npy", "mert_path": "MERT-v0-public_feature_default/test/435/Vocals.wav.npy"}
+{"clip_id": 423, "vocal_path": "../singing_transcription_ICASSP2021/test/423/Vocals.wav", "label_path": "MERT-label/test/423/labels.npy", "mert_path": "MERT-v0-public_feature_default/test/423/Vocals.wav.npy"}
+{"clip_id": 441, "vocal_path": "../singing_transcription_ICASSP2021/test/441/Vocals.wav", "label_path": "MERT-label/test/441/labels.npy", "mert_path": "MERT-v0-public_feature_default/test/441/Vocals.wav.npy"}
+{"clip_id": 450, "vocal_path": "../singing_transcription_ICASSP2021/test/450/Vocals.wav", "label_path": "MERT-label/test/450/labels.npy", "mert_path": "MERT-v0-public_feature_default/test/450/Vocals.wav.npy"}
+{"clip_id": 485, "vocal_path": "../singing_transcription_ICASSP2021/test/485/Vocals.wav", "label_path": "MERT-label/test/485/labels.npy", "mert_path": "MERT-v0-public_feature_default/test/485/Vocals.wav.npy"}
+{"clip_id": 448, "vocal_path": "../singing_transcription_ICASSP2021/test/448/Vocals.wav", "label_path": "MERT-label/test/448/labels.npy", "mert_path": "MERT-v0-public_feature_default/test/448/Vocals.wav.npy"}
+{"clip_id": 421, "vocal_path": "../singing_transcription_ICASSP2021/test/421/Vocals.wav", "label_path": "MERT-label/test/421/labels.npy", "mert_path": "MERT-v0-public_feature_default/test/421/Vocals.wav.npy"}
+{"clip_id": 413, "vocal_path": "../singing_transcription_ICASSP2021/test/413/Vocals.wav", "label_path": "MERT-label/test/413/labels.npy", "mert_path": "MERT-v0-public_feature_default/test/413/Vocals.wav.npy"}
+{"clip_id": 440, "vocal_path": "../singing_transcription_ICASSP2021/test/440/Vocals.wav", "label_path": "MERT-label/test/440/labels.npy", "mert_path": "MERT-v0-public_feature_default/test/440/Vocals.wav.npy"}
+{"clip_id": 446, "vocal_path": "../singing_transcription_ICASSP2021/test/446/Vocals.wav", "label_path": "MERT-label/test/446/labels.npy", "mert_path": "MERT-v0-public_feature_default/test/446/Vocals.wav.npy"}
+{"clip_id": 472, "vocal_path": "../singing_transcription_ICASSP2021/test/472/Vocals.wav", "label_path": "MERT-label/test/472/labels.npy", "mert_path": "MERT-v0-public_feature_default/test/472/Vocals.wav.npy"}
+{"clip_id": 461, "vocal_path": "../singing_transcription_ICASSP2021/test/461/Vocals.wav", "label_path": "MERT-label/test/461/labels.npy", "mert_path": "MERT-v0-public_feature_default/test/461/Vocals.wav.npy"}
+{"clip_id": 471, "vocal_path": "../singing_transcription_ICASSP2021/test/471/Vocals.wav", "label_path": "MERT-label/test/471/labels.npy", "mert_path": "MERT-v0-public_feature_default/test/471/Vocals.wav.npy"}
+{"clip_id": 434, "vocal_path": "../singing_transcription_ICASSP2021/test/434/Vocals.wav", "label_path": "MERT-label/test/434/labels.npy", "mert_path": "MERT-v0-public_feature_default/test/434/Vocals.wav.npy"}
+{"clip_id": 462, "vocal_path": "../singing_transcription_ICASSP2021/test/462/Vocals.wav", "label_path": "MERT-label/test/462/labels.npy", "mert_path": "MERT-v0-public_feature_default/test/462/Vocals.wav.npy"}
+{"clip_id": 433, "vocal_path": "../singing_transcription_ICASSP2021/test/433/Vocals.wav", "label_path": "MERT-label/test/433/labels.npy", "mert_path": "MERT-v0-public_feature_default/test/433/Vocals.wav.npy"}
+{"clip_id": 479, "vocal_path": "../singing_transcription_ICASSP2021/test/479/Vocals.wav", "label_path": "MERT-label/test/479/labels.npy", "mert_path": "MERT-v0-public_feature_default/test/479/Vocals.wav.npy"}
+{"clip_id": 401, "vocal_path": "../singing_transcription_ICASSP2021/test/401/Vocals.wav", "label_path": "MERT-label/test/401/labels.npy", "mert_path": "MERT-v0-public_feature_default/test/401/Vocals.wav.npy"}
+{"clip_id": 443, "vocal_path": "../singing_transcription_ICASSP2021/test/443/Vocals.wav", "label_path": "MERT-label/test/443/labels.npy", "mert_path": "MERT-v0-public_feature_default/test/443/Vocals.wav.npy"}
+{"clip_id": 482, "vocal_path": "../singing_transcription_ICASSP2021/test/482/Vocals.wav", "label_path": "MERT-label/test/482/labels.npy", "mert_path": "MERT-v0-public_feature_default/test/482/Vocals.wav.npy"}
+{"clip_id": 469, "vocal_path": "../singing_transcription_ICASSP2021/test/469/Vocals.wav", "label_path": "MERT-label/test/469/labels.npy", "mert_path": "MERT-v0-public_feature_default/test/469/Vocals.wav.npy"}
+{"clip_id": 477, "vocal_path": "../singing_transcription_ICASSP2021/test/477/Vocals.wav", "label_path": "MERT-label/test/477/labels.npy", "mert_path": "MERT-v0-public_feature_default/test/477/Vocals.wav.npy"}
+{"clip_id": 489, "vocal_path": "../singing_transcription_ICASSP2021/test/489/Vocals.wav", "label_path": "MERT-label/test/489/labels.npy", "mert_path": "MERT-v0-public_feature_default/test/489/Vocals.wav.npy"}
+{"clip_id": 474, "vocal_path": "../singing_transcription_ICASSP2021/test/474/Vocals.wav", "label_path": "MERT-label/test/474/labels.npy", "mert_path": "MERT-v0-public_feature_default/test/474/Vocals.wav.npy"}
+{"clip_id": 436, "vocal_path": "../singing_transcription_ICASSP2021/test/436/Vocals.wav", "label_path": "MERT-label/test/436/labels.npy", "mert_path": "MERT-v0-public_feature_default/test/436/Vocals.wav.npy"}
+{"clip_id": 408, "vocal_path": "../singing_transcription_ICASSP2021/test/408/Vocals.wav", "label_path": "MERT-label/test/408/labels.npy", "mert_path": "MERT-v0-public_feature_default/test/408/Vocals.wav.npy"}
+{"clip_id": 447, "vocal_path": "../singing_transcription_ICASSP2021/test/447/Vocals.wav", "label_path": "MERT-label/test/447/labels.npy", "mert_path": "MERT-v0-public_feature_default/test/447/Vocals.wav.npy"}
+{"clip_id": 473, "vocal_path": "../singing_transcription_ICASSP2021/test/473/Vocals.wav", "label_path": "MERT-label/test/473/labels.npy", "mert_path": "MERT-v0-public_feature_default/test/473/Vocals.wav.npy"}
+{"clip_id": 492, "vocal_path": "../singing_transcription_ICASSP2021/test/492/Vocals.wav", "label_path": "MERT-label/test/492/labels.npy", "mert_path": "MERT-v0-public_feature_default/test/492/Vocals.wav.npy"}
+{"clip_id": 409, "vocal_path": "../singing_transcription_ICASSP2021/test/409/Vocals.wav", "label_path": "MERT-label/test/409/labels.npy", "mert_path": "MERT-v0-public_feature_default/test/409/Vocals.wav.npy"}
+{"clip_id": 465, "vocal_path": "../singing_transcription_ICASSP2021/test/465/Vocals.wav", "label_path": "MERT-label/test/465/labels.npy", "mert_path": "MERT-v0-public_feature_default/test/465/Vocals.wav.npy"}
+{"clip_id": 407, "vocal_path": "../singing_transcription_ICASSP2021/test/407/Vocals.wav", "label_path": "MERT-label/test/407/labels.npy", "mert_path": "MERT-v0-public_feature_default/test/407/Vocals.wav.npy"}
+{"clip_id": 491, "vocal_path": "../singing_transcription_ICASSP2021/test/491/Vocals.wav", "label_path": "MERT-label/test/491/labels.npy", "mert_path": "MERT-v0-public_feature_default/test/491/Vocals.wav.npy"}
+{"clip_id": 497, "vocal_path": "../singing_transcription_ICASSP2021/test/497/Vocals.wav", "label_path": "MERT-label/test/497/labels.npy", "mert_path": "MERT-v0-public_feature_default/test/497/Vocals.wav.npy"}
+{"clip_id": 431, "vocal_path": "../singing_transcription_ICASSP2021/test/431/Vocals.wav", "label_path": "MERT-label/test/431/labels.npy", "mert_path": "MERT-v0-public_feature_default/test/431/Vocals.wav.npy"}
+{"clip_id": 404, "vocal_path": "../singing_transcription_ICASSP2021/test/404/Vocals.wav", "label_path": "MERT-label/test/404/labels.npy", "mert_path": "MERT-v0-public_feature_default/test/404/Vocals.wav.npy"}
+{"clip_id": 402, "vocal_path": "../singing_transcription_ICASSP2021/test/402/Vocals.wav", "label_path": "MERT-label/test/402/labels.npy", "mert_path": "MERT-v0-public_feature_default/test/402/Vocals.wav.npy"}
+{"clip_id": 468, "vocal_path": "../singing_transcription_ICASSP2021/test/468/Vocals.wav", "label_path": "MERT-label/test/468/labels.npy", "mert_path": "MERT-v0-public_feature_default/test/468/Vocals.wav.npy"}
+{"clip_id": 453, "vocal_path": "../singing_transcription_ICASSP2021/test/453/Vocals.wav", "label_path": "MERT-label/test/453/labels.npy", "mert_path": "MERT-v0-public_feature_default/test/453/Vocals.wav.npy"}
+{"clip_id": 419, "vocal_path": "../singing_transcription_ICASSP2021/test/419/Vocals.wav", "label_path": "MERT-label/test/419/labels.npy", "mert_path": "MERT-v0-public_feature_default/test/419/Vocals.wav.npy"}
+{"clip_id": 452, "vocal_path": "../singing_transcription_ICASSP2021/test/452/Vocals.wav", "label_path": "MERT-label/test/452/labels.npy", "mert_path": "MERT-v0-public_feature_default/test/452/Vocals.wav.npy"}
+{"clip_id": 430, "vocal_path": "../singing_transcription_ICASSP2021/test/430/Vocals.wav", "label_path": "MERT-label/test/430/labels.npy", "mert_path": "MERT-v0-public_feature_default/test/430/Vocals.wav.npy"}
+{"clip_id": 422, "vocal_path": "../singing_transcription_ICASSP2021/test/422/Vocals.wav", "label_path": "MERT-label/test/422/labels.npy", "mert_path": "MERT-v0-public_feature_default/test/422/Vocals.wav.npy"}
+{"clip_id": 411, "vocal_path": "../singing_transcription_ICASSP2021/test/411/Vocals.wav", "label_path": "MERT-label/test/411/labels.npy", "mert_path": "MERT-v0-public_feature_default/test/411/Vocals.wav.npy"}
+{"clip_id": 467, "vocal_path": "../singing_transcription_ICASSP2021/test/467/Vocals.wav", "label_path": "MERT-label/test/467/labels.npy", "mert_path": "MERT-v0-public_feature_default/test/467/Vocals.wav.npy"}
+{"clip_id": 478, "vocal_path": "../singing_transcription_ICASSP2021/test/478/Vocals.wav", "label_path": "MERT-label/test/478/labels.npy", "mert_path": "MERT-v0-public_feature_default/test/478/Vocals.wav.npy"}
+{"clip_id": 470, "vocal_path": "../singing_transcription_ICASSP2021/test/470/Vocals.wav", "label_path": "MERT-label/test/470/labels.npy", "mert_path": "MERT-v0-public_feature_default/test/470/Vocals.wav.npy"}
+{"clip_id": 403, "vocal_path": "../singing_transcription_ICASSP2021/test/403/Vocals.wav", "label_path": "MERT-label/test/403/labels.npy", "mert_path": "MERT-v0-public_feature_default/test/403/Vocals.wav.npy"}
+{"clip_id": 424, "vocal_path": "../singing_transcription_ICASSP2021/test/424/Vocals.wav", "label_path": "MERT-label/test/424/labels.npy", "mert_path": "MERT-v0-public_feature_default/test/424/Vocals.wav.npy"}
+{"clip_id": 459, "vocal_path": "../singing_transcription_ICASSP2021/test/459/Vocals.wav", "label_path": "MERT-label/test/459/labels.npy", "mert_path": "MERT-v0-public_feature_default/test/459/Vocals.wav.npy"}
+{"clip_id": 444, "vocal_path": "../singing_transcription_ICASSP2021/test/444/Vocals.wav", "label_path": "MERT-label/test/444/labels.npy", "mert_path": "MERT-v0-public_feature_default/test/444/Vocals.wav.npy"}
+{"clip_id": 460, "vocal_path": "../singing_transcription_ICASSP2021/test/460/Vocals.wav", "label_path": "MERT-label/test/460/labels.npy", "mert_path": "MERT-v0-public_feature_default/test/460/Vocals.wav.npy"}
+{"clip_id": 464, "vocal_path": "../singing_transcription_ICASSP2021/test/464/Vocals.wav", "label_path": "MERT-label/test/464/labels.npy", "mert_path": "MERT-v0-public_feature_default/test/464/Vocals.wav.npy"}
+{"clip_id": 455, "vocal_path": "../singing_transcription_ICASSP2021/test/455/Vocals.wav", "label_path": "MERT-label/test/455/labels.npy", "mert_path": "MERT-v0-public_feature_default/test/455/Vocals.wav.npy"}
+{"clip_id": 495, "vocal_path": "../singing_transcription_ICASSP2021/test/495/Vocals.wav", "label_path": "MERT-label/test/495/labels.npy", "mert_path": "MERT-v0-public_feature_default/test/495/Vocals.wav.npy"}
+{"clip_id": 484, "vocal_path": "../singing_transcription_ICASSP2021/test/484/Vocals.wav", "label_path": "MERT-label/test/484/labels.npy", "mert_path": "MERT-v0-public_feature_default/test/484/Vocals.wav.npy"}
+{"clip_id": 457, "vocal_path": "../singing_transcription_ICASSP2021/test/457/Vocals.wav", "label_path": "MERT-label/test/457/labels.npy", "mert_path": "MERT-v0-public_feature_default/test/457/Vocals.wav.npy"}
+{"clip_id": 420, "vocal_path": "../singing_transcription_ICASSP2021/test/420/Vocals.wav", "label_path": "MERT-label/test/420/labels.npy", "mert_path": "MERT-v0-public_feature_default/test/420/Vocals.wav.npy"}
+{"clip_id": 405, "vocal_path": "../singing_transcription_ICASSP2021/test/405/Vocals.wav", "label_path": "MERT-label/test/405/labels.npy", "mert_path": "MERT-v0-public_feature_default/test/405/Vocals.wav.npy"}
+{"clip_id": 454, "vocal_path": "../singing_transcription_ICASSP2021/test/454/Vocals.wav", "label_path": "MERT-label/test/454/labels.npy", "mert_path": "MERT-v0-public_feature_default/test/454/Vocals.wav.npy"}
+{"clip_id": 486, "vocal_path": "../singing_transcription_ICASSP2021/test/486/Vocals.wav", "label_path": "MERT-label/test/486/labels.npy", "mert_path": "MERT-v0-public_feature_default/test/486/Vocals.wav.npy"}
+{"clip_id": 475, "vocal_path": "../singing_transcription_ICASSP2021/test/475/Vocals.wav", "label_path": "MERT-label/test/475/labels.npy", "mert_path": "MERT-v0-public_feature_default/test/475/Vocals.wav.npy"}
+{"clip_id": 425, "vocal_path": "../singing_transcription_ICASSP2021/test/425/Vocals.wav", "label_path": "MERT-label/test/425/labels.npy", "mert_path": "MERT-v0-public_feature_default/test/425/Vocals.wav.npy"}
+{"clip_id": 429, "vocal_path": "../singing_transcription_ICASSP2021/test/429/Vocals.wav", "label_path": "MERT-label/test/429/labels.npy", "mert_path": "MERT-v0-public_feature_default/test/429/Vocals.wav.npy"}
+{"clip_id": 416, "vocal_path": "../singing_transcription_ICASSP2021/test/416/Vocals.wav", "label_path": "MERT-label/test/416/labels.npy", "mert_path": "MERT-v0-public_feature_default/test/416/Vocals.wav.npy"}
+{"clip_id": 490, "vocal_path": "../singing_transcription_ICASSP2021/test/490/Vocals.wav", "label_path": "MERT-label/test/490/labels.npy", "mert_path": "MERT-v0-public_feature_default/test/490/Vocals.wav.npy"}
+{"clip_id": 476, "vocal_path": "../singing_transcription_ICASSP2021/test/476/Vocals.wav", "label_path": "MERT-label/test/476/labels.npy", "mert_path": "MERT-v0-public_feature_default/test/476/Vocals.wav.npy"}
+{"clip_id": 445, "vocal_path": "../singing_transcription_ICASSP2021/test/445/Vocals.wav", "label_path": "MERT-label/test/445/labels.npy", "mert_path": "MERT-v0-public_feature_default/test/445/Vocals.wav.npy"}
+{"clip_id": 412, "vocal_path": "../singing_transcription_ICASSP2021/test/412/Vocals.wav", "label_path": "MERT-label/test/412/labels.npy", "mert_path": "MERT-v0-public_feature_default/test/412/Vocals.wav.npy"}
+{"clip_id": 494, "vocal_path": "../singing_transcription_ICASSP2021/test/494/Vocals.wav", "label_path": "MERT-label/test/494/labels.npy", "mert_path": "MERT-v0-public_feature_default/test/494/Vocals.wav.npy"}
+{"clip_id": 406, "vocal_path": "../singing_transcription_ICASSP2021/test/406/Vocals.wav", "label_path": "MERT-label/test/406/labels.npy", "mert_path": "MERT-v0-public_feature_default/test/406/Vocals.wav.npy"}
+{"clip_id": 481, "vocal_path": "../singing_transcription_ICASSP2021/test/481/Vocals.wav", "label_path": "MERT-label/test/481/labels.npy", "mert_path": "MERT-v0-public_feature_default/test/481/Vocals.wav.npy"}
+{"clip_id": 449, "vocal_path": "../singing_transcription_ICASSP2021/test/449/Vocals.wav", "label_path": "MERT-label/test/449/labels.npy", "mert_path": "MERT-v0-public_feature_default/test/449/Vocals.wav.npy"}
+{"clip_id": 427, "vocal_path": "../singing_transcription_ICASSP2021/test/427/Vocals.wav", "label_path": "MERT-label/test/427/labels.npy", "mert_path": "MERT-v0-public_feature_default/test/427/Vocals.wav.npy"}
+{"clip_id": 500, "vocal_path": "../singing_transcription_ICASSP2021/test/500/Vocals.wav", "label_path": "MERT-label/test/500/labels.npy", "mert_path": "MERT-v0-public_feature_default/test/500/Vocals.wav.npy"}
+{"clip_id": 432, "vocal_path": "../singing_transcription_ICASSP2021/test/432/Vocals.wav", "label_path": "MERT-label/test/432/labels.npy", "mert_path": "MERT-v0-public_feature_default/test/432/Vocals.wav.npy"}
+{"clip_id": 451, "vocal_path": "../singing_transcription_ICASSP2021/test/451/Vocals.wav", "label_path": "MERT-label/test/451/labels.npy", "mert_path": "MERT-v0-public_feature_default/test/451/Vocals.wav.npy"}
+{"clip_id": 456, "vocal_path": "../singing_transcription_ICASSP2021/test/456/Vocals.wav", "label_path": "MERT-label/test/456/labels.npy", "mert_path": "MERT-v0-public_feature_default/test/456/Vocals.wav.npy"}
+{"clip_id": 480, "vocal_path": "../singing_transcription_ICASSP2021/test/480/Vocals.wav", "label_path": "MERT-label/test/480/labels.npy", "mert_path": "MERT-v0-public_feature_default/test/480/Vocals.wav.npy"}
+{"clip_id": 439, "vocal_path": "../singing_transcription_ICASSP2021/test/439/Vocals.wav", "label_path": "MERT-label/test/439/labels.npy", "mert_path": "MERT-v0-public_feature_default/test/439/Vocals.wav.npy"}
+{"clip_id": 410, "vocal_path": "../singing_transcription_ICASSP2021/test/410/Vocals.wav", "label_path": "MERT-label/test/410/labels.npy", "mert_path": "MERT-v0-public_feature_default/test/410/Vocals.wav.npy"}
+{"clip_id": 466, "vocal_path": "../singing_transcription_ICASSP2021/test/466/Vocals.wav", "label_path": "MERT-label/test/466/labels.npy", "mert_path": "MERT-v0-public_feature_default/test/466/Vocals.wav.npy"}
+{"clip_id": 487, "vocal_path": "../singing_transcription_ICASSP2021/test/487/Vocals.wav", "label_path": "MERT-label/test/487/labels.npy", "mert_path": "MERT-v0-public_feature_default/test/487/Vocals.wav.npy"}
+{"clip_id": 438, "vocal_path": "../singing_transcription_ICASSP2021/test/438/Vocals.wav", "label_path": "MERT-label/test/438/labels.npy", "mert_path": "MERT-v0-public_feature_default/test/438/Vocals.wav.npy"}
+{"clip_id": 428, "vocal_path": "../singing_transcription_ICASSP2021/test/428/Vocals.wav", "label_path": "MERT-label/test/428/labels.npy", "mert_path": "MERT-v0-public_feature_default/test/428/Vocals.wav.npy"}
+{"clip_id": 458, "vocal_path": "../singing_transcription_ICASSP2021/test/458/Vocals.wav", "label_path": "MERT-label/test/458/labels.npy", "mert_path": "MERT-v0-public_feature_default/test/458/Vocals.wav.npy"}

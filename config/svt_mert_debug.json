@@ -27,12 +27,9 @@
                 }
             },
             "scheduler": {
-                "name": "ReduceLROnPlateau",
+                "name": "ConstantLR",
                 "monitor": "val/loss/total",
-                "args": {
-                    "factor": 0.2,
-                    "patience": 10
-                }
+                "args": {}
             }
         },
         "loss": {
