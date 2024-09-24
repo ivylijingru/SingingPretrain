@@ -45,7 +45,6 @@ class TranscriptionDataset(Data.Dataset):
         # resample
         resample_rate = self.processor.sampling_rate
         if resample_rate != sampling_rate:
-            print(f'setting rate from {sampling_rate} to {resample_rate}')
             resampler = T.Resample(sampling_rate, resample_rate)
         else:
             resampler = None
@@ -69,8 +68,7 @@ class TranscriptionDataset(Data.Dataset):
             all_layer_hidden_states = torch.stack(outputs.hidden_states).squeeze()
 
         # output_data["mert"] = mert_feature[start_index:start_index+self.rand_slice_window].float()
-        output_data["mert"] = all_layer_hidden_states[-1,:,:].squeeze().float() # [13 layer, Time steps, 768 feature_dim]
-        print(output_data["mert"].shape)
+        output_data["mert"] = all_layer_hidden_states.float() # [13 layer, Time steps, 768 feature_dim]
         output_data["y"] = label_feature[start_index:start_index+self.rand_slice_window].float()
 
         return output_data

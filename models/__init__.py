@@ -58,7 +58,13 @@ class SVTDownstreamModel(pl.LightningModule):
             total_loss += loss_dict[loss_key]
         loss_dict["loss/total"] = total_loss
 
-        return loss_dict
+        logic_dict = dict()
+        logic_dict["onset"] = model_output[:, 0]
+        logic_dict["silence"] = model_output[:, 1]
+        logic_dict["octave"] = model_output[:, 2:7]
+        logic_dict["pitch"] = model_output[:, 7:20]
+
+        return loss_dict, logic_dict
 
     def log_dict_prefix(self, d, prefix):
         for k, v in d.items():
