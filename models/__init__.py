@@ -19,7 +19,7 @@ class SVTDownstreamModel(pl.LightningModule):
         self.loss_fn = get_loss_fn(configs["loss"])
 
     def training_step(self, batch, batch_idx) -> Any:
-        loss_dict = self.common_step(batch)
+        loss_dict, _ = self.common_step(batch)
 
         self.log("lr", self.optimizers().optimizer.param_groups[0]["lr"])
         self.log_dict_prefix(loss_dict, "train")
@@ -29,7 +29,7 @@ class SVTDownstreamModel(pl.LightningModule):
         return loss_dict["loss/total"]
 
     def validation_step(self, batch, batch_idx) -> Any:
-        loss_dict = self.common_step(batch)
+        loss_dict, _ = self.common_step(batch)
 
         self.log_dict_prefix(loss_dict, "val")
         
@@ -38,7 +38,7 @@ class SVTDownstreamModel(pl.LightningModule):
         return loss_dict["loss/total"]
 
     def test_step(self, batch, batch_idx):
-        loss_dict = self.common_step(batch)
+        loss_dict, _ = self.common_step(batch)
 
         self.log_dict_prefix(loss_dict, "test")
 
@@ -59,10 +59,10 @@ class SVTDownstreamModel(pl.LightningModule):
         loss_dict["loss/total"] = total_loss
 
         logic_dict = dict()
-        logic_dict["onset"] = model_output[:, 0]
-        logic_dict["silence"] = model_output[:, 1]
-        logic_dict["octave"] = model_output[:, 2:7]
-        logic_dict["pitch"] = model_output[:, 7:20]
+        logic_dict["onset"] = model_output[:, :, 0]
+        logic_dict["silence"] = model_output[:, :, 1]
+        logic_dict["octave"] = model_output[:, :, 2:7]
+        logic_dict["pitch"] = model_output[:, :, 7:20]
 
         return loss_dict, logic_dict
 
