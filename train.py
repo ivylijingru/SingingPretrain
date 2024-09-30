@@ -36,4 +36,6 @@ def train(config):
 
 
 if __name__ == "__main__":
-    train("config/svt_mert_debug.json")
+    import fire
+
+    fire.Fire(train)
