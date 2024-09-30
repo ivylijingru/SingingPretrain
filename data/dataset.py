@@ -25,7 +25,7 @@ class TranscriptionDataset(Data.Dataset):
         self.rand_slice_window = slice_sec * token_rate
 
         # loading our model weights
-        self.model = AutoModel.from_pretrained("m-a-p/MERT-v0-public", trust_remote_code=True)
+        # self.model = AutoModel.from_pretrained("m-a-p/MERT-v0-public", trust_remote_code=True)
         # loading the corresponding preprocessor config
         self.processor = Wav2Vec2FeatureExtractor.from_pretrained("m-a-p/MERT-v0-public",trust_remote_code=True)
 
@@ -63,12 +63,16 @@ class TranscriptionDataset(Data.Dataset):
 
         # process and extract embeddings
         inputs = self.processor(wave_snippet, sampling_rate=resample_rate, return_tensors="pt")
-        with torch.no_grad():
-            outputs = self.model(**inputs, output_hidden_states=True)
-            all_layer_hidden_states = torch.stack(outputs.hidden_states).squeeze()
+        # with torch.no_grad():
+        #     outputs = self.model(**inputs, output_hidden_states=True)
+        #     all_layer_hidden_states = torch.stack(outputs.hidden_states).squeeze()
 
         # output_data["mert"] = mert_feature[start_index:start_index+self.rand_slice_window].float()
-        output_data["mert"] = all_layer_hidden_states.float() # [13 layer, Time steps, 768 feature_dim]
+        for input_key in inputs.keys():
+            inputs[input_key] = inputs[input_key].squeeze(0)
+
+        output_data["inputs"] = inputs
+        # output_data["mert"] = all_layer_hidden_states.float() # [13 layer, Time steps, 768 feature_dim]
         output_data["y"] = label_feature[start_index:start_index+self.rand_slice_window].float()
 
         return output_data

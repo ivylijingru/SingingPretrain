@@ -5,7 +5,7 @@
         "test_manifest_path": "data_json/mirst500-test.json",
         "slice_sec": 5,
         "token_rate": 50,
-        "batch_size": 64,
+        "batch_size": 16,
         "train_shuffle": true,
         "num_workers": 16
     },
@@ -55,6 +55,20 @@
         "logger": {
             "save_dir": "work_dir_mert",
             "name": "log"
+        },
+        "checkpoint": {
+            "dirpath": "work_dir_mert/weight",
+            "filename": "epoch={epoch}-val_loss-total={val/loss/total:.3f}",
+            "auto_insert_metric_name": false,
+            "monitor": "val/loss/total",
+            "mode": "min",
+            "every_n_epochs": 1,
+            "save_top_k": 5
+        },
+        "early_stopping": {
+            "monitor": "val/loss/total",
+            "mode": "min",
+            "patience": 12
         }
     }
 }

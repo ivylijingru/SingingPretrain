@@ -3,6 +3,7 @@ from typing import Any
 import torch
 import torch.nn.functional as F
 import pytorch_lightning as pl
+from transformers import AutoModel
 
 from .basemodels import get_base_model
 from .loss_fn import get_loss_fn
@@ -16,6 +17,7 @@ class SVTDownstreamModel(pl.LightningModule):
 
         self.optim_cfg = configs["optim"]
         self.model = get_base_model(configs["mlp"])
+        self.mert_model = AutoModel.from_pretrained("m-a-p/MERT-v0-public", trust_remote_code=True)
         self.loss_fn = get_loss_fn(configs["loss"])
 
     def training_step(self, batch, batch_idx) -> Any:
@@ -45,10 +47,19 @@ class SVTDownstreamModel(pl.LightningModule):
         # self.test_metrics.update(logits, torch.round(batch["y"]), batch["y_mask"])
 
     def common_step(self, batch):
-        mert = batch["mert"]
+        # mert = batch["mert"]
+        inputs = batch["inputs"]
         y = batch["y"]
         
         loss_dict = dict()
+        # must set eval here; if in init will automatically set to training mode
+        self.mert_model.eval()
+        with torch.no_grad():
+            outputs = self.mert_model(**inputs, output_hidden_states=True)
+            # outputs: [bs, time, feature_shape]
+            # we want hidden states to be: [bs, n_channels, time, feature_shape]
+            all_layer_hidden_states = torch.stack(outputs.hidden_states, dim=1)
+        mert = all_layer_hidden_states
 
         model_output = self.model(mert)
         loss_dict = self.loss_fn(model_output, y)

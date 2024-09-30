@@ -20,17 +20,15 @@ def train(config):
     datamodule = TranscriptionDataModule(**data_cfg)
     model = SVTDownstreamModel(model_cfg)
 
-    """
     callbacks = [
         ModelCheckpoint(**trainer_cfg["checkpoint"]),
         EarlyStopping(**trainer_cfg["early_stopping"])
     ]
-    """
 
     trainer = pl.Trainer(
         **trainer_cfg["args"],
         logger=TensorBoardLogger(**trainer_cfg["logger"]),
-        # callbacks=callbacks
+        callbacks=callbacks
     )
 
     trainer.fit(model, datamodule=datamodule)
