@@ -54,7 +54,7 @@
         },
         "logger": {
             "save_dir": "work_dir_mert",
-            "name": "log"
+            "name": "log_mlp1024"
         },
         "checkpoint": {
             "dirpath": "work_dir_mert/weight_mlp1024",

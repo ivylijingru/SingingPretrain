@@ -8,8 +8,25 @@ COnPOff  0.257557 0.282073 0.268348
 COnP     0.479153 0.527897 0.500631
 COn      0.680818 0.751427 0.711923
 
+(marble) jli3268@aurora:~/singing_transcription_ICASSP2021$ python evaluate/evaluate.py MIR-ST500_20210206/MIR-ST500_corrected.json ../SingingPretrain/evaluate_res_epoch\=27-val_loss-total\=2.873.ckpt.json 0.05
+1727710026.0981421
+         Precision Recall F1-score
+COnPOff  0.325149 0.302426 0.312507
+COnP     0.600014 0.558588 0.576929
+COn      0.769386 0.715108 0.739075
+gt note num: 31311.0 tr note num: 29096.0
+
+MLP 1024
+(marble) jli3268@aurora:~/singing_transcription_ICASSP2021$ python evaluate/evaluate.py MIR-ST500_20210206/MIR-ST500_corrected.json ../SingingPretrain/evaluate_res_epoch\=27-val_loss-total\=3.122.ckpt.json 0.05
+1727710511.492257
+         Precision Recall F1-score
+COnPOff  0.306619 0.332593 0.318137
+COnP     0.540829 0.591287 0.563198
+COn      0.704345 0.770360 0.733627
+gt note num: 31311.0 tr note num: 34250.0
 """
 
+import os
 import json
 import torch
 import torch.nn as nn
@@ -107,17 +124,29 @@ def test(config):
     with open(test_manifest_path) as f:
         test_data = [json.loads(line) for line in f]
 
-    model = model.load_from_checkpoint("work_dir_mert/log/version_46/checkpoints/epoch=59-step=420.ckpt")
+    checkpoint_dir = config["trainer"]["checkpoint"]["dirpath"]
+    min_loss = 10000
+    min_idx = -1
+    for ii, file_name in enumerate(os.listdir(checkpoint_dir)):
+        this_loss = file_name.split(".")[0].split("=")[-1] + file_name.split(".")[1]
+        this_loss = float(this_loss)
+        if this_loss < min_loss:
+            min_loss = this_loss
+            min_idx = ii
+    checkpoint_path = os.path.join(checkpoint_dir, os.listdir(checkpoint_dir)[min_idx])
+
+    model = model.load_from_checkpoint(checkpoint_path)
     model.to("cuda")
     model.eval()
 
     results = dict()
 
     # loading our model weights
-    mert_model = AutoModel.from_pretrained("m-a-p/MERT-v0-public", trust_remote_code=True)
+    # mert_model = AutoModel.from_pretrained("m-a-p/MERT-v0-public", trust_remote_code=True)
+    # mert_model.eval()
     # loading the corresponding preprocessor config
     mert_processor = Wav2Vec2FeatureExtractor.from_pretrained("m-a-p/MERT-v0-public",trust_remote_code=True)
-    mert_model.to("cuda")
+    # mert_model.to("cuda")
 
     for idx in range(len(test_data)):
         with torch.no_grad():
@@ -143,15 +172,17 @@ def test(config):
             
             # process and extract embeddings
             inputs = mert_processor(input_audio, sampling_rate=resample_rate, return_tensors="pt").to("cuda")
-            with torch.no_grad():
-                outputs = mert_model(**inputs, output_hidden_states=True)
-                all_layer_hidden_states = torch.stack(outputs.hidden_states).squeeze()
+            # with torch.no_grad():
+            #     outputs = mert_model(**inputs, output_hidden_states=True)
+            #     all_layer_hidden_states = torch.stack(outputs.hidden_states).squeeze()
 
-            mert_feature = all_layer_hidden_states.float().unsqueeze(0)
-            # mert_feature = torch.squeeze(mert_feature, 0)
+            # mert_feature = all_layer_hidden_states.float().unsqueeze(0)
+            # # mert_feature = torch.squeeze(mert_feature, 0)
             label_feature = torch.from_numpy(np.load(test_data[idx]["label_path"]))
+
             batch = dict()
-            batch["mert"] = mert_feature.to("cuda")
+            batch["inputs"] = inputs
+            # batch["mert"] = mert_feature.to("cuda")
             batch["y"] = label_feature.unsqueeze(0).to("cuda")
             _, logic_dict = model.common_step(batch)
 
@@ -174,10 +205,11 @@ def test(config):
             results[test_data[idx]["clip_id"]] = parse_frame_info(frame_list)
 
     # TODO: change naming strategy
-    with open("evaluate_res.json", "w") as f:
+    with open("evaluate_res_{}.json".format(os.listdir(checkpoint_dir)[min_idx]), "w") as f:
         json.dump(results, f)
 
 
 if __name__ == "__main__":
-    config = "config/svt_mert_debug.json"
-    test(config)
+    import fire
+
+    fire.Fire(test)
