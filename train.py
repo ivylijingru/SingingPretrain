@@ -1,5 +1,6 @@
 import json
 
+import torch
 import pytorch_lightning as pl
 from pytorch_lightning.loggers import TensorBoardLogger
 from pytorch_lightning.callbacks import ModelCheckpoint, EarlyStopping
@@ -20,9 +21,13 @@ def train(config):
     datamodule = TranscriptionDataModule(**data_cfg)
     model = SVTDownstreamModel(model_cfg)
 
+    checkpoint_path = "/home/jli3268/SingingPretrain/work_dir_mert/weight/epoch=119-val_loss-total=2.815.ckpt"
+    checkpoint = torch.load(checkpoint_path)
+    model.load_state_dict(checkpoint['state_dict'], strict=False)
+
     callbacks = [
         ModelCheckpoint(**trainer_cfg["checkpoint"]),
-        EarlyStopping(**trainer_cfg["early_stopping"])
+        # EarlyStopping(**trainer_cfg["early_stopping"])
     ]
 
     trainer = pl.Trainer(

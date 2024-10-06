@@ -18,6 +18,7 @@ class SVTDownstreamModel(pl.LightningModule):
         self.optim_cfg = configs["optim"]
         self.model = get_base_model(configs["mlp"])
         self.mert_model = AutoModel.from_pretrained("m-a-p/MERT-v0-public", trust_remote_code=True)
+        self.mert_model.config.mask_time_prob = 0.0
         self.loss_fn = get_loss_fn(configs["loss"])
 
     def training_step(self, batch, batch_idx) -> Any:
@@ -53,12 +54,10 @@ class SVTDownstreamModel(pl.LightningModule):
         
         loss_dict = dict()
         # must set eval here; if in init will automatically set to training mode
-        self.mert_model.eval()
-        with torch.no_grad():
-            outputs = self.mert_model(**inputs, output_hidden_states=True)
-            # outputs: [bs, time, feature_shape]
-            # we want hidden states to be: [bs, n_channels, time, feature_shape]
-            all_layer_hidden_states = torch.stack(outputs.hidden_states, dim=1)
+        outputs = self.mert_model(**inputs, output_hidden_states=True)
+        # outputs: [bs, time, feature_shape]
+        # we want hidden states to be: [bs, n_channels, time, feature_shape]
+        all_layer_hidden_states = torch.stack(outputs.hidden_states, dim=1)
         mert = all_layer_hidden_states
 
         model_output = self.model(mert)
