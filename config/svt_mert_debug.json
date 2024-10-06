@@ -68,7 +68,7 @@
         "early_stopping": {
             "monitor": "val/loss/total",
             "mode": "min",
-            "patience": 12
+            "patience": 100
         }
     }
 }

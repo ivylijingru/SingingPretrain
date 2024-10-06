@@ -128,7 +128,7 @@ def test(config):
     min_loss = 10000
     min_idx = -1
     for ii, file_name in enumerate(os.listdir(checkpoint_dir)):
-        this_loss = file_name.split(".")[0].split("=")[-1] + file_name.split(".")[1]
+        this_loss = file_name.split(".")[0].split("=")[-1] + file_name.split(".")[1].split("-")[0]
         this_loss = float(this_loss)
         if this_loss < min_loss:
             min_loss = this_loss
