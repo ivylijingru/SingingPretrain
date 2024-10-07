@@ -76,6 +76,27 @@ class SVTDownstreamModel(pl.LightningModule):
 
         return loss_dict, logic_dict
 
+    def inference_step(self, batch):
+        # mert = batch["mert"]
+        inputs = batch["inputs"]
+        
+        # must set eval here; if in init will automatically set to training mode
+        outputs = self.mert_model(**inputs, output_hidden_states=True)
+        # outputs: [bs, time, feature_shape]
+        # we want hidden states to be: [bs, n_channels, time, feature_shape]
+        all_layer_hidden_states = torch.stack(outputs.hidden_states, dim=1)
+        mert = all_layer_hidden_states
+
+        model_output = self.model(mert)
+
+        logic_dict = dict()
+        logic_dict["onset"] = model_output[:, :, 0]
+        logic_dict["silence"] = model_output[:, :, 1]
+        logic_dict["octave"] = model_output[:, :, 2:7]
+        logic_dict["pitch"] = model_output[:, :, 7:20]
+
+        return logic_dict
+
     def log_dict_prefix(self, d, prefix):
         for k, v in d.items():
             self.log("{}/{}".format(prefix, k), v)

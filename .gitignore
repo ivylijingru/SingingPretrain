@@ -2,3 +2,4 @@
 *.npy
 
 work_dir_mert/
+evaluate_res/
