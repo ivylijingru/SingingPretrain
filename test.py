@@ -1,31 +1,3 @@
-"""
-Generating the time sequence; 
-Command line: python evaluate.py ../MIR-ST500_20210206/MIR-ST500_corrected.json ../../SingingPretrain/evaluate_res_update.json 0.05
-results:
-
-         Precision Recall F1-score
-COnPOff  0.257557 0.282073 0.268348
-COnP     0.479153 0.527897 0.500631
-COn      0.680818 0.751427 0.711923
-
-(marble) jli3268@aurora:~/singing_transcription_ICASSP2021$ python evaluate/evaluate.py MIR-ST500_20210206/MIR-ST500_corrected.json ../SingingPretrain/evaluate_res_epoch\=27-val_loss-total\=2.873.ckpt.json 0.05
-1727710026.0981421
-         Precision Recall F1-score
-COnPOff  0.325149 0.302426 0.312507
-COnP     0.600014 0.558588 0.576929
-COn      0.769386 0.715108 0.739075
-gt note num: 31311.0 tr note num: 29096.0
-
-MLP 1024
-(marble) jli3268@aurora:~/singing_transcription_ICASSP2021$ python evaluate/evaluate.py MIR-ST500_20210206/MIR-ST500_corrected.json ../SingingPretrain/evaluate_res_epoch\=27-val_loss-total\=3.122.ckpt.json 0.05
-1727710511.492257
-         Precision Recall F1-score
-COnPOff  0.306619 0.332593 0.318137
-COnP     0.540829 0.591287 0.563198
-COn      0.704345 0.770360 0.733627
-gt note num: 31311.0 tr note num: 34250.0
-"""
-
 import os
 import json
 import torch
@@ -249,7 +221,9 @@ def test(config):
     checkpoint_dir = config["trainer"]["checkpoint"]["dirpath"]
     checkpoint_path, min_idx = get_best_checkpoint(checkpoint_dir)
 
-    model = model.load_from_checkpoint(checkpoint_path)
+    checkpoint = torch.load(checkpoint_path)
+    model.load_state_dict(checkpoint['state_dict'], strict=False)
+
     model.to("cuda")
     model.eval()
 
