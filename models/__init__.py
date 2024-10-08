@@ -18,23 +18,27 @@ class SVTDownstreamModel(pl.LightningModule):
         self.optim_cfg = configs["optim"]
         self.model = get_base_model(configs["mlp"])
         self.mert_model = AutoModel.from_pretrained("m-a-p/MERT-v0-public", trust_remote_code=True)
-
-        self.mert_model.config.mask_time_prob = 0.0
-        for param in self.mert_model.parameters():
-            param.requires_grad = False
-        # Unfreeze the target module
-        for param in self.mert_model.encoder.parameters():
-            param.requires_grad = True
-
+        self.freeze_epoch = configs["finetune"]["freeze_epoch"]
         self.loss_fn = get_loss_fn(configs["loss"])
 
-    def training_step(self, batch, batch_idx) -> Any:
+    def on_train_epoch_start(self):
+        # 冻结 mert_model 参数直到 freeze_epoch 结束
+        self.mert_model.config.mask_time_prob = 0.0
+        if self.current_epoch < self.freeze_epoch:
+            for param in self.mert_model.parameters():
+                param.requires_grad = False
+        else:
+            for param in self.mert_model.parameters():
+                param.requires_grad = False
+            for param in self.mert_model.encoder.parameters():
+                param.requires_grad = True
+
+    def training_step(self, batch, batch_idx, optimizer_idx) -> Any:
         loss_dict, _ = self.common_step(batch)
 
-        self.log("lr", self.optimizers().optimizer.param_groups[0]["lr"])
+        self.log("lr_mert", self.optimizers()[0].param_groups[0]["lr"])
+        self.log("lr_mlp", self.optimizers()[1].param_groups[0]["lr"])
         self.log_dict_prefix(loss_dict, "train")
-
-        # self.train_metrics.update(logits, torch.round(batch["y"]), batch["y_mask"])
 
         return loss_dict["loss/total"]
 
@@ -42,8 +46,6 @@ class SVTDownstreamModel(pl.LightningModule):
         loss_dict, _ = self.common_step(batch)
 
         self.log_dict_prefix(loss_dict, "val")
-        
-        # self.val_metrics.update(logits, torch.round(batch["y"]), batch["y_mask"])
 
         return loss_dict["loss/total"]
 
@@ -51,8 +53,6 @@ class SVTDownstreamModel(pl.LightningModule):
         loss_dict, _ = self.common_step(batch)
 
         self.log_dict_prefix(loss_dict, "test")
-
-        # self.test_metrics.update(logits, torch.round(batch["y"]), batch["y_mask"])
 
     def common_step(self, batch):
         # mert = batch["mert"]
@@ -109,14 +109,27 @@ class SVTDownstreamModel(pl.LightningModule):
             self.log("{}/{}".format(prefix, k), v)
 
     def configure_optimizers(self) -> Any:
-        optimizer_cfg = self.optim_cfg["optimizer"]
+        # here we define two optimizers with different learning rate
+        optimizer_cfg_mert = self.optim_cfg["optimizer_mert"]
+        optimizer_cfg_mlp = self.optim_cfg["optimizer_mlp"]
         scheduler_cfg = self.optim_cfg["scheduler"]
 
-        optimizer = torch.optim.__dict__.get(optimizer_cfg["name"])(self.parameters(), **optimizer_cfg["args"])
-        scheduler = torch.optim.lr_scheduler.__dict__.get(scheduler_cfg["name"])(optimizer, **scheduler_cfg["args"])
-        return dict(
-            optimizer=optimizer,
-            lr_scheduler=dict(
-                scheduler=scheduler,
-                monitor=scheduler_cfg["monitor"],
-            ))
+        optimizer_mert = torch.optim.__dict__.get(optimizer_cfg_mert["name"])(self.mert_model.encoder.parameters(), **optimizer_cfg_mert["args"])
+        optimizer_mlp = torch.optim.__dict__.get(optimizer_cfg_mlp["name"])(self.model.parameters(), **optimizer_cfg_mlp["args"])
+        scheduler_mert = torch.optim.lr_scheduler.__dict__.get(scheduler_cfg["name"])(optimizer_mert, **scheduler_cfg["args"])
+        scheduler_mlp = torch.optim.lr_scheduler.__dict__.get(scheduler_cfg["name"])(optimizer_mlp, **scheduler_cfg["args"])
+
+        return (
+            dict(
+                optimizer=optimizer_mert,
+                lr_scheduler=dict(
+                    scheduler=scheduler_mert,
+                    monitor=scheduler_cfg["monitor"],
+            )),
+            dict(
+                optimizer=optimizer_mlp,
+                lr_scheduler=dict(
+                    scheduler=scheduler_mlp,
+                    monitor=scheduler_cfg["monitor"],
+            )),
+        )
