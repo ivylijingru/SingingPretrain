@@ -23,7 +23,7 @@ def train(config):
     
     callbacks = [
         ModelCheckpoint(**trainer_cfg["checkpoint"]),
-        # EarlyStopping(**trainer_cfg["early_stopping"])
+        EarlyStopping(**trainer_cfg["early_stopping"])
     ]
 
     trainer = pl.Trainer(
