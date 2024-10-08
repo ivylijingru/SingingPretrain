@@ -1,5 +1,6 @@
 import json
 
+import torch
 import pytorch_lightning as pl
 from pytorch_lightning.loggers import TensorBoardLogger
 from pytorch_lightning.callbacks import ModelCheckpoint, EarlyStopping
@@ -19,7 +20,7 @@ def train(config):
 
     datamodule = TranscriptionDataModule(**data_cfg)
     model = SVTDownstreamModel(model_cfg)
-
+    
     callbacks = [
         ModelCheckpoint(**trainer_cfg["checkpoint"]),
         EarlyStopping(**trainer_cfg["early_stopping"])
