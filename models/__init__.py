@@ -28,8 +28,6 @@ class SVTDownstreamModel(pl.LightningModule):
             for param in self.mert_model.parameters():
                 param.requires_grad = False
         else:
-            for param in self.mert_model.parameters():
-                param.requires_grad = False
             for param in self.mert_model.encoder.parameters():
                 param.requires_grad = True
 

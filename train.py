@@ -20,6 +20,10 @@ def train(config):
 
     datamodule = TranscriptionDataModule(**data_cfg)
     model = SVTDownstreamModel(model_cfg)
+
+    checkpoint_path = "work_dir_mert/weight_finetune/epoch=27-val_loss-total=2.635.ckpt"
+    checkpoint = torch.load(checkpoint_path)
+    model.load_state_dict(checkpoint['state_dict'], strict=False)
     
     callbacks = [
         ModelCheckpoint(**trainer_cfg["checkpoint"]),
