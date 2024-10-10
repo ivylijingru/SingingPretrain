@@ -5,6 +5,7 @@ import torch.nn as nn
 import numpy as np
 import soundfile as sf
 import torchaudio.transforms as T
+import torch.nn.functional as F
 
 import pytorch_lightning as pl
 from pytorch_lightning.loggers import TensorBoardLogger
@@ -149,21 +150,28 @@ def process_sliced_audio(inputs, label_feature, model, mert_processor, slice_len
     # 切分 inputs 和 label_feature
     total_frames = inputs.shape[-1]  # 假设输入的最后一维是帧数
     num_slices = total_frames // num_frames_per_slice
+    num_tokens = num_slices * 50
 
     all_onset_prob = []
     all_silence_prob = []
     all_octave_logits = []
     all_pitch_logits = []
 
-    for slice_idx in range(num_slices):
+    for slice_idx in range(num_slices + 1):
         # 计算每个切片的开始和结束帧
         start_frame = slice_idx * num_frames_per_slice
         end_frame = min(start_frame + num_frames_per_slice + int(resample_rate / 50), total_frames)
+        
+        if end_frame <= start_frame:
+            continue
 
         # 取出当前切片
         input_slice = inputs[..., start_frame:end_frame]  # 假设 inputs 是 (B, C, T)
+        padding = (0, num_frames_per_slice + int(resample_rate / 50) - (end_frame - start_frame))
+        input_slice_padded = F.pad(input_slice, padding, "constant", 0)
+
         # label_slice = label_feature[..., start_frame:end_frame]  # 切片 label_feature
-        mert_slice = mert_processor(input_slice, sampling_rate=resample_rate, return_tensors="pt").to("cuda")
+        mert_slice = mert_processor(input_slice_padded, sampling_rate=resample_rate, return_tensors="pt").to("cuda")
 
         # 生成 batch，进行前向传播
         batch = {
@@ -180,16 +188,80 @@ def process_sliced_audio(inputs, label_feature, model, mert_processor, slice_len
         pitch_logits = logic_dict["pitch"][0].cpu()
 
         # 将各部分结果拼接到对应的列表中
-        all_onset_prob.append(onset_prob)
-        all_silence_prob.append(silence_prob)
-        all_octave_logits.append(octave_logits)
-        all_pitch_logits.append(pitch_logits)
+        token_nums = int((end_frame - start_frame) / resample_rate * 50)
+        all_onset_prob.append(onset_prob[:token_nums])
+        all_silence_prob.append(silence_prob[:token_nums])
+        all_octave_logits.append(octave_logits[:token_nums])
+        all_pitch_logits.append(pitch_logits[:token_nums])
+        # print(token_nums, onset_prob.shape)
 
     # 将所有切片的输出拼接到一起
     all_onset_prob = torch.cat(all_onset_prob, dim=0)
     all_silence_prob = torch.cat(all_silence_prob, dim=0)
     all_octave_logits = torch.cat(all_octave_logits, dim=0)
     all_pitch_logits = torch.cat(all_pitch_logits, dim=0)
+
+    half_num_frames = int(slice_length * resample_rate / 2)
+
+    half_onset_prob = []
+    half_silence_prob = []
+    half_octave_logits = []
+    half_pitch_logits = []
+
+    half_num_tokens = int(slice_length * 50 / 2)
+    half_onset_prob.append(all_onset_prob[:half_num_tokens])
+    half_silence_prob.append(all_silence_prob[:half_num_tokens])
+    half_octave_logits.append(all_octave_logits[:half_num_tokens])
+    half_pitch_logits.append(all_pitch_logits[:half_num_tokens])
+
+    for slice_idx in range(num_slices + 1):
+        # 计算每个切片的开始和结束帧
+        start_frame = slice_idx * num_frames_per_slice + half_num_frames
+        end_frame = min(start_frame + num_frames_per_slice + int(resample_rate / 50), total_frames)
+        if end_frame <= start_frame:
+            continue
+
+        # 取出当前切片
+        input_slice = inputs[..., start_frame:end_frame]  # 假设 inputs 是 (B, C, T)
+        padding = (0, num_frames_per_slice + int(resample_rate / 50) - (end_frame - start_frame))
+        input_slice_padded = F.pad(input_slice, padding, "constant", 0)
+
+        # label_slice = label_feature[..., start_frame:end_frame]  # 切片 label_feature
+        mert_slice = mert_processor(input_slice_padded, sampling_rate=resample_rate, return_tensors="pt").to("cuda")
+
+
+        # 生成 batch，进行前向传播
+        batch = {
+            "inputs": mert_slice.to("cuda"),
+        }
+        
+        # 获取模型输出
+        logic_dict = model.inference_step(batch)
+
+        # 处理输出
+        onset_prob = torch.sigmoid(logic_dict["onset"][0]).cpu()
+        silence_prob = torch.sigmoid(logic_dict["silence"][0]).cpu()
+        octave_logits = logic_dict["octave"][0].cpu()
+        pitch_logits = logic_dict["pitch"][0].cpu()
+
+        token_nums = int((end_frame - start_frame) / resample_rate * 50)
+        # 将各部分结果拼接到对应的列表中
+        half_onset_prob.append(onset_prob[:token_nums])
+        half_silence_prob.append(silence_prob[:token_nums])
+        half_octave_logits.append(octave_logits[:token_nums])
+        half_pitch_logits.append(pitch_logits[:token_nums])
+        # print(token_nums)
+
+    # 将所有切片的输出拼接到一起
+    half_onset_prob = torch.cat(half_onset_prob, dim=0)
+    half_silence_prob = torch.cat(half_silence_prob, dim=0)
+    half_octave_logits = torch.cat(half_octave_logits, dim=0)
+    half_pitch_logits = torch.cat(half_pitch_logits, dim=0)
+
+    all_onset_prob = (all_onset_prob + half_onset_prob) / 2.0
+    all_silence_prob = (all_silence_prob + half_silence_prob) / 2.0
+    all_octave_logits = (all_octave_logits + half_octave_logits) / 2.0
+    all_pitch_logits = (all_pitch_logits + half_pitch_logits) / 2.0
 
     # 生成最终的 frame_list
     frame_list = [
