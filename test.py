@@ -430,6 +430,7 @@ def test(config_file):
     with open(file_path, 'w') as f:
         f.write(output_str)
 
+
 if __name__ == "__main__":
     import fire
 
