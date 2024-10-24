@@ -22,7 +22,7 @@
             "optimizer": {
                 "name": "Adam",
                 "args": {
-                    "lr": 0.003,
+                    "lr": 5e-5,
                     "weight_decay": 0.0001
                 }
             },
@@ -54,21 +54,16 @@
         },
         "logger": {
             "save_dir": "work_dir_mert",
-            "name": "log"
+            "name": "log_finetune"
         },
         "checkpoint": {
-            "dirpath": "work_dir_mert/weight",
+            "dirpath": "work_dir_mert/weight_finetune",
             "filename": "epoch={epoch}-val_loss-total={val/loss/total:.3f}",
             "auto_insert_metric_name": false,
             "monitor": "val/loss/total",
             "mode": "min",
             "every_n_epochs": 1,
-            "save_top_k": 5
-        },
-        "early_stopping": {
-            "monitor": "val/loss/total",
-            "mode": "min",
-            "patience": 100
+            "save_top_k": 2
         }
     }
 }

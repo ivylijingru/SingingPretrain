@@ -12,15 +12,12 @@ class DownstreamMLP(nn.Module):
         dropout_prob,
     ) -> None:
         super().__init__()
-
-        self.hidden = nn.Linear(input_dim, hidden_layer_size)
-        self.output = nn.Linear(hidden_layer_size, num_classes)
-        self.dropout = nn.Dropout(p=dropout_prob)
+        self.output = nn.Linear(input_dim, num_classes)
+        self.aggregator = nn.Parameter(torch.randn((1, 13, 1, 1)))
 
     def forward(self, x):
-        x = self.hidden(x)
-        x = self.dropout(x)
-        x = F.relu(x)
-
+        bs, n_layers, time_step, dim = x.shape
+        weights = F.softmax(self.aggregator, dim=1)
+        x = (x * weights).sum(dim=1)
         output = self.output(x)
         return output

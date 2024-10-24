@@ -22,10 +22,10 @@ class TranscriptionDataset(Data.Dataset):
         with open(manifest_path) as f:
             self.data = [json.loads(line) for line in f]
         
-        self.rand_slice_window = slice_sec * token_rate
-
+        self.rand_slice_window = int(slice_sec * token_rate)
+        self.token_rate = token_rate
         # loading our model weights
-        self.model = AutoModel.from_pretrained("m-a-p/MERT-v0-public", trust_remote_code=True)
+        # self.model = AutoModel.from_pretrained("m-a-p/MERT-v0-public", trust_remote_code=True)
         # loading the corresponding preprocessor config
         self.processor = Wav2Vec2FeatureExtractor.from_pretrained("m-a-p/MERT-v0-public",trust_remote_code=True)
 
@@ -45,7 +45,6 @@ class TranscriptionDataset(Data.Dataset):
         # resample
         resample_rate = self.processor.sampling_rate
         if resample_rate != sampling_rate:
-            print(f'setting rate from {sampling_rate} to {resample_rate}')
             resampler = T.Resample(sampling_rate, resample_rate)
         else:
             resampler = None
@@ -57,20 +56,23 @@ class TranscriptionDataset(Data.Dataset):
         # align label and audio length
         label_feature = torch.from_numpy(np.load(self.data[idx]["label_path"]))
         start_index = np.random.randint(low=0, high=label_feature.shape[0]-self.rand_slice_window)
-        wave_start_index = int(start_index * resample_rate / 50) # TODO: remove hard code 50 hz
+        wave_start_index = int(start_index * resample_rate / self.token_rate) # TODO: remove hard code 50 hz
         # if we don't add this "resample_rate / 50" seems to be wrong.
-        wave_end_index = int(wave_start_index + self.rand_slice_window * resample_rate / 50 + resample_rate / 50)
+        wave_end_index = int(wave_start_index + self.rand_slice_window * resample_rate / self.token_rate)
         wave_snippet = input_audio[wave_start_index:wave_end_index]
 
         # process and extract embeddings
         inputs = self.processor(wave_snippet, sampling_rate=resample_rate, return_tensors="pt")
-        with torch.no_grad():
-            outputs = self.model(**inputs, output_hidden_states=True)
-            all_layer_hidden_states = torch.stack(outputs.hidden_states).squeeze()
+        # with torch.no_grad():
+        #     outputs = self.model(**inputs, output_hidden_states=True)
+        #     all_layer_hidden_states = torch.stack(outputs.hidden_states).squeeze()
 
         # output_data["mert"] = mert_feature[start_index:start_index+self.rand_slice_window].float()
-        output_data["mert"] = all_layer_hidden_states[-1,:,:].squeeze().float() # [13 layer, Time steps, 768 feature_dim]
-        print(output_data["mert"].shape)
+        for input_key in inputs.keys():
+            inputs[input_key] = inputs[input_key].squeeze(0)
+
+        output_data["inputs"] = inputs
+        # output_data["mert"] = all_layer_hidden_states.float() # [13 layer, Time steps, 768 feature_dim]
         output_data["y"] = label_feature[start_index:start_index+self.rand_slice_window].float()
 
         return output_data

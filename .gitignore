@@ -2,3 +2,5 @@
 *.npy
 
 work_dir_mert/
+evaluate_res/
+MIR-ST500_20210206/

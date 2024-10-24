@@ -14,7 +14,7 @@
             "args": {
                 "input_dim": 768,
                 "num_classes": 20,
-                "hidden_layer_size": 512,
+                "hidden_layer_size": 1024,
                 "dropout_prob": 0.5
             }
         },
@@ -54,10 +54,10 @@
         },
         "logger": {
             "save_dir": "work_dir_mert",
-            "name": "log"
+            "name": "log_mlp1024"
         },
         "checkpoint": {
-            "dirpath": "work_dir_mert/weight",
+            "dirpath": "work_dir_mert/weight_mlp1024",
             "filename": "epoch={epoch}-val_loss-total={val/loss/total:.3f}",
             "auto_insert_metric_name": false,
             "monitor": "val/loss/total",

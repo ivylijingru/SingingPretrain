@@ -19,10 +19,17 @@
             }
         },
         "optim": {
-            "optimizer": {
+            "optimizer_mlp": {
                 "name": "Adam",
                 "args": {
-                    "lr": 0.003,
+                    "lr": 3e-3,
+                    "weight_decay": 0.0001
+                }
+            },
+            "optimizer_mert": {
+                "name": "Adam",
+                "args": {
+                    "lr": 5e-5,
                     "weight_decay": 0.0001
                 }
             },
@@ -36,6 +43,9 @@
             "args": {
                 "onset_pos_weight": 15.0
             }
+        },
+        "finetune": {
+            "freeze_epoch": 90
         }
     },
     "trainer": {
@@ -54,21 +64,16 @@
         },
         "logger": {
             "save_dir": "work_dir_mert",
-            "name": "log"
+            "name": "log_finetune_debug"
         },
         "checkpoint": {
-            "dirpath": "work_dir_mert/weight",
+            "dirpath": "work_dir_mert/weight_finetune_debug",
             "filename": "epoch={epoch}-val_loss-total={val/loss/total:.3f}",
             "auto_insert_metric_name": false,
             "monitor": "val/loss/total",
             "mode": "min",
             "every_n_epochs": 1,
-            "save_top_k": 5
-        },
-        "early_stopping": {
-            "monitor": "val/loss/total",
-            "mode": "min",
-            "patience": 100
+            "save_top_k": 2
         }
     }
 }
