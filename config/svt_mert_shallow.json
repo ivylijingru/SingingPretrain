@@ -36,6 +36,9 @@
             "args": {
                 "onset_pos_weight": 15.0
             }
+        },
+        "finetune": {
+            "freeze_epoch": 90
         }
     },
     "trainer": {

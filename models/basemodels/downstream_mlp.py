@@ -13,11 +13,12 @@ class DownstreamMLP(nn.Module):
     ) -> None:
         super().__init__()
         self.output = nn.Linear(input_dim, num_classes)
-        self.aggregator = nn.Parameter(torch.randn((1, 13, 1, 1)))
+        self.aggregator = nn.Conv1d(in_channels=13, out_channels=1, kernel_size=1)
 
     def forward(self, x):
         bs, n_layers, time_step, dim = x.shape
-        weights = F.softmax(self.aggregator, dim=1)
-        x = (x * weights).sum(dim=1)
+        x = x.reshape(bs, n_layers, time_step * dim)
+        x = self.aggregator(x).squeeze()
+        x = x.reshape(bs, time_step, dim)
         output = self.output(x)
         return output
