@@ -19,5 +19,8 @@ class DownstreamMLP(nn.Module):
         bs, n_layers, time_step, dim = x.shape
         weights = F.softmax(self.aggregator, dim=1)
         x = (x * weights).sum(dim=1)
-        output = self.output(x)
+        x = torch.transpose(x, 1, 2)
+        token_emb = nn.AdaptiveAvgPool1d(time_step * 2)(x)
+        token_emb = torch.transpose(token_emb, 1, 2)
+        output = self.output(token_emb)
         return output

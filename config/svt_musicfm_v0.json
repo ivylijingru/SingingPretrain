@@ -1,0 +1,84 @@
+{
+    "seed": 1223,
+    "data": {
+        "train_manifest_path": "data_json_musicfm/mirst500-musicfm-train.json",
+        "test_manifest_path": "data_json_musicfm/mirst500-musicfm-test.json",
+        "slice_sec": 5,
+        "token_rate": 50,
+        "batch_size": 32,
+        "train_shuffle": true,
+        "num_workers": 16
+    },
+    "model": {
+        "mlp": {
+            "args": {
+                "input_dim": 1024,
+                "num_classes": 20,
+                "hidden_layer_size": 512,
+                "dropout_prob": 0.5
+            }
+        },
+        "optim": {
+            "optimizer_mlp": {
+                "name": "Adam",
+                "args": {
+                    "lr": 3e-3,
+                    "weight_decay": 0.0001
+                }
+            },
+            "optimizer_musicfm": {
+                "name": "Adam",
+                "args": {
+                    "lr": 5e-5,
+                    "weight_decay": 0.0001
+                }
+            },
+            "scheduler": {
+                "name": "ConstantLR",
+                "monitor": "val/loss/total",
+                "args": {}
+            }
+        },
+        "loss": {
+            "args": {
+                "onset_pos_weight": 15.0
+            }
+        },
+        "finetune": {
+            "freeze_epoch": 90
+        }
+    },
+    "trainer": {
+        "args": {
+            "max_epochs": -1,
+            "max_steps": 100000,
+            "gradient_clip_val": 1.0,
+            "num_sanity_val_steps": -1,
+            "accelerator": "gpu",
+            "devices": [
+                0
+            ],
+            "deterministic": true,
+            "check_val_every_n_epoch": 1,
+            "log_every_n_steps": 10
+        },
+        "logger": {
+            "save_dir": "work_dir_musicfm",
+            "name": "log_v0"
+        },
+        "checkpoint": {
+            "dirpath": "work_dir_musicfm/weight_v0",
+            "filename": "epoch={epoch}-val_loss-total={val/loss/total:.3f}",
+            "auto_insert_metric_name": false,
+            "monitor": "val/loss/total",
+            "mode": "min",
+            "every_n_epochs": 1,
+            "save_top_k": 2
+        },
+        "early_stopping": {
+            "monitor": "val/loss/total",
+            "mode": "min",
+            "patience": 300
+        }
+    }
+}

@@ -24,10 +24,6 @@ class TranscriptionDataset(Data.Dataset):
         
         self.rand_slice_window = int(slice_sec * token_rate)
         self.token_rate = token_rate
-        # loading our model weights
-        # self.model = AutoModel.from_pretrained("m-a-p/MERT-v0-public", trust_remote_code=True)
-        # loading the corresponding preprocessor config
-        self.processor = Wav2Vec2FeatureExtractor.from_pretrained("m-a-p/MERT-v0-public",trust_remote_code=True)
 
     def __len__(self):
         return len(self.data)
@@ -43,7 +39,7 @@ class TranscriptionDataset(Data.Dataset):
         audio_array = torch.from_numpy(audio).float()
 
         # resample
-        resample_rate = self.processor.sampling_rate
+        resample_rate = 24000 # TODO: remove hard code
         if resample_rate != sampling_rate:
             resampler = T.Resample(sampling_rate, resample_rate)
         else:
@@ -61,17 +57,7 @@ class TranscriptionDataset(Data.Dataset):
         wave_end_index = int(wave_start_index + self.rand_slice_window * resample_rate / self.token_rate)
         wave_snippet = input_audio[wave_start_index:wave_end_index]
 
-        # process and extract embeddings
-        inputs = self.processor(wave_snippet, sampling_rate=resample_rate, return_tensors="pt")
-        # with torch.no_grad():
-        #     outputs = self.model(**inputs, output_hidden_states=True)
-        #     all_layer_hidden_states = torch.stack(outputs.hidden_states).squeeze()
-
-        # output_data["mert"] = mert_feature[start_index:start_index+self.rand_slice_window].float()
-        for input_key in inputs.keys():
-            inputs[input_key] = inputs[input_key].squeeze(0)
-
-        output_data["inputs"] = inputs
+        output_data["inputs"] = wave_snippet
         # output_data["mert"] = all_layer_hidden_states.float() # [13 layer, Time steps, 768 feature_dim]
         output_data["y"] = label_feature[start_index:start_index+self.rand_slice_window].float()
 

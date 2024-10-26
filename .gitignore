@@ -2,5 +2,6 @@
 *.npy
 
 work_dir_mert/
+work_dir_musicfm/
 evaluate_res/
 MIR-ST500_20210206/
