@@ -34,14 +34,14 @@ class SVTDownstreamModel(pl.LightningModule):
 
     def on_train_epoch_start(self):
         # 冻结 musicfm_model 参数直到 freeze_epoch 结束
-        if self.current_epoch < self.freeze_epoch:
-            for param in self.musicfm_model.parameters():
-                param.requires_grad = False
-        else:
-            for param in self.musicfm_model.parameters():
-                param.requires_grad = False
-            for param in self.musicfm_model.conformer.parameters():
-                param.requires_grad = True
+        # if self.current_epoch < self.freeze_epoch:
+        #     for param in self.musicfm_model.parameters():
+        #         param.requires_grad = False
+        # else:
+        for param in self.musicfm_model.parameters():
+            param.requires_grad = False
+        for param in self.musicfm_model.conformer.parameters():
+            param.requires_grad = True
 
     def training_step(self, batch, batch_idx, optimizer_idx) -> Any:
         loss_dict, _ = self.common_step(batch)
@@ -72,7 +72,6 @@ class SVTDownstreamModel(pl.LightningModule):
         # must set eval here; if in init will automatically set to training mode
         _, hidden_states = self.musicfm_model.get_predictions(inputs)
         musicfm_emb = torch.stack(hidden_states, dim=1)
-        print(musicfm_emb.grad)
 
         model_output = self.model(musicfm_emb)
         loss_dict = self.loss_fn(model_output, y)
@@ -131,14 +130,14 @@ class SVTDownstreamModel(pl.LightningModule):
         
         # scheduler_mlp = LambdaLR(optimizer_mlp, lr_lambda)
         
-        # # Define a custom lambda function to control learning rate based on epoch number
-        # def lr_lambda(epoch):
-        #     if epoch < self.freeze_epoch:
-        #         return 0.0  # Keep initial lr (3e-5) for the first 90 epochs
-        #     else:
-        #         return 1.0  # Change to 5e-5 after 90 epochs
+        # Define a custom lambda function to control learning rate based on epoch number
+        def lr_lambda(epoch):
+            if epoch < self.freeze_epoch:
+                return 0.0  # Keep initial lr (3e-5) for the first 90 epochs
+            else:
+                return 1.0  # Change to 5e-5 after 90 epochs
         
-        # scheduler_musicfm = LambdaLR(optimizer_musicfm, lr_lambda)
+        scheduler_musicfm = LambdaLR(optimizer_musicfm, lr_lambda)
 
         return (
             dict(

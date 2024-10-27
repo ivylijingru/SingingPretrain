@@ -19,7 +19,7 @@ from data import TranscriptionDataModule
 from models import SVTDownstreamModel
 
 
-FRAME_LENGTH = 1 / 49.8
+FRAME_LENGTH = 1 / 50
 
 def parse_frame_info(frame_info, onset_thres=0.4, offset_thres=0.5):
     """Parse frame info [(onset_probs, offset_probs, pitch_class)...] into desired label format."""
@@ -130,7 +130,7 @@ def get_best_checkpoint(checkpoint_dir):
     return checkpoint_path, min_idx
 
 
-def process_sliced_audio(inputs, label_feature, model, mert_processor, slice_length=5):
+def process_sliced_audio(inputs, label_feature, model, slice_length=5):
     """
     将输入和标签切片并通过模型处理，最后生成 frame_list。
 
@@ -146,13 +146,13 @@ def process_sliced_audio(inputs, label_feature, model, mert_processor, slice_len
     """
 
     # 获取采样率并计算每个切片的帧数
-    resample_rate = mert_processor.sampling_rate
+    resample_rate = 24000 # mert_processor.sampling_rate
     num_frames_per_slice = slice_length * resample_rate
 
     # 切分 inputs 和 label_feature
     total_frames = inputs.shape[-1]  # 假设输入的最后一维是帧数
     num_slices = total_frames // num_frames_per_slice
-    num_tokens = num_slices * 49.8
+    num_tokens = num_slices * 50
 
     all_onset_prob = []
     all_silence_prob = []
@@ -173,11 +173,10 @@ def process_sliced_audio(inputs, label_feature, model, mert_processor, slice_len
         input_slice_padded = F.pad(input_slice, padding, "constant", 0)
 
         # label_slice = label_feature[..., start_frame:end_frame]  # 切片 label_feature
-        mert_slice = mert_processor(input_slice_padded, sampling_rate=resample_rate, return_tensors="pt").to("cuda")
-
+        # mert_slice = mert_processor(input_slice_padded, sampling_rate=resample_rate, return_tensors="pt").to("cuda")
         # 生成 batch，进行前向传播
         batch = {
-            "inputs": mert_slice.to("cuda"),
+            "inputs": input_slice_padded.unsqueeze(0).to("cuda"),
         }
         
         # 获取模型输出
@@ -190,7 +189,7 @@ def process_sliced_audio(inputs, label_feature, model, mert_processor, slice_len
         pitch_logits = logic_dict["pitch"][0].cpu()
 
         # 将各部分结果拼接到对应的列表中
-        token_nums = int((end_frame - start_frame) / resample_rate * 49.8)
+        token_nums = int((end_frame - start_frame) / resample_rate * 50)
         all_onset_prob.append(onset_prob[:token_nums])
         all_silence_prob.append(silence_prob[:token_nums])
         all_octave_logits.append(octave_logits[:token_nums])
@@ -395,16 +394,16 @@ def test(config_file):
 
     results = dict()
 
-    mert_processor = Wav2Vec2FeatureExtractor.from_pretrained("m-a-p/MERT-v0-public",trust_remote_code=True)
+    # mert_processor = Wav2Vec2FeatureExtractor.from_pretrained("m-a-p/MERT-v0-public",trust_remote_code=True)
 
     for idx in range(len(test_data)):
         with torch.no_grad():
             audio_array, sampling_rate = load_audio(test_data[idx]["vocal_path"])
-            resample_rate = mert_processor.sampling_rate
+            resample_rate = 24000
             input_audio = resample_audio(audio_array, sampling_rate, resample_rate)
             # process and extract embeddings
             label_feature = torch.from_numpy(np.load(test_data[idx]["label_path"]))
-            frame_list = process_sliced_audio(input_audio, label_feature, model, mert_processor)
+            frame_list = process_sliced_audio(input_audio, label_feature, model) #, mert_processor)
             results[test_data[idx]["clip_id"]] = parse_frame_info(frame_list)
 
     # TODO: change naming strategy
