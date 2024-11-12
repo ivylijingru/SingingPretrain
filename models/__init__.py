@@ -42,6 +42,10 @@ class SVTDownstreamModel(pl.LightningModule):
             param.requires_grad = False
         for param in self.musicfm_model.conformer.parameters():
             param.requires_grad = True
+        if self.current_epoch < self.freeze_epoch:
+            self.musicfm_model.conformer.eval()
+        else:
+            self.musicfm_model.conformer.train()
 
     def training_step(self, batch, batch_idx, optimizer_idx) -> Any:
         loss_dict, _ = self.common_step(batch)
