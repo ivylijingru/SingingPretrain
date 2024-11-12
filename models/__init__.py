@@ -6,6 +6,7 @@ import pytorch_lightning as pl
 from torch.optim.lr_scheduler import LambdaLR
 
 from transformers import AutoModel
+from peft import LoraConfig, get_peft_model, PeftModel
 
 from .basemodels import get_base_model
 from .loss_fn import get_loss_fn
@@ -20,20 +21,15 @@ class SVTDownstreamModel(pl.LightningModule):
         self.optim_cfg = configs["optim"]
         self.model = get_base_model(configs["mlp"])
         self.mert_model = AutoModel.from_pretrained("m-a-p/MERT-v0-public", trust_remote_code=True)
-        self.freeze_epoch = configs["finetune"]["freeze_epoch"]
         self.loss_fn = get_loss_fn(configs["loss"])
+        self.lora_config = LoraConfig(**configs["lora"])
+        self.mert_model = get_peft_model(self.mert_model, self.lora_config)
+        for name, param in self.mert_model.named_parameters():
+            print(f"{name}: requires_grad = {param.requires_grad}")
 
     def on_train_epoch_start(self):
         # 冻结 mert_model 参数直到 freeze_epoch 结束
         self.mert_model.config.mask_time_prob = 0.0
-        if self.current_epoch < self.freeze_epoch:
-            for param in self.mert_model.parameters():
-                param.requires_grad = False
-        else:
-            for param in self.mert_model.parameters():
-                param.requires_grad = False
-            for param in self.mert_model.encoder.parameters():
-                param.requires_grad = True
 
     def training_step(self, batch, batch_idx, optimizer_idx) -> Any:
         loss_dict, _ = self.common_step(batch)
@@ -120,24 +116,6 @@ class SVTDownstreamModel(pl.LightningModule):
         optimizer_mlp = torch.optim.__dict__.get(optimizer_cfg_mlp["name"])(self.model.parameters(), **optimizer_cfg_mlp["args"])
         scheduler_mert = torch.optim.lr_scheduler.__dict__.get(scheduler_cfg["name"])(optimizer_mert, **scheduler_cfg["args"])
         scheduler_mlp = torch.optim.lr_scheduler.__dict__.get(scheduler_cfg["name"])(optimizer_mlp, **scheduler_cfg["args"])
-
-        # # Define a custom lambda function to control learning rate based on epoch number
-        # def lr_lambda(epoch):
-        #     if epoch < self.freeze_epoch:
-        #         return 1.0  # Keep initial lr (3e-5) for the first 90 epochs
-        #     else:
-        #         return 5e-5 / 3e-3  # Change to 5e-5 after 90 epochs
-        
-        # scheduler_mlp = LambdaLR(optimizer_mlp, lr_lambda)
-        
-        # # Define a custom lambda function to control learning rate based on epoch number
-        # def lr_lambda(epoch):
-        #     if epoch < self.freeze_epoch:
-        #         return 0.0  # Keep initial lr (3e-5) for the first 90 epochs
-        #     else:
-        #         return 1.0  # Change to 5e-5 after 90 epochs
-        
-        # scheduler_mert = LambdaLR(optimizer_mert, lr_lambda)
 
         return (
             dict(
