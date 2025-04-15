@@ -411,7 +411,7 @@ def test(config_file):
     with open("tmp.json", "w") as f:
         json.dump(results, f)
 
-    gt_file = "MIR-ST500_20210206/MIR-ST500_corrected.json"
+    gt_file = "../singing_transcription_ICASSP2021/MIR-ST500_20210206/MIR-ST500_corrected.json"
     my_eval = MirEval()
     my_eval.prepare_data(gt_file, "tmp.json")
     avg = my_eval.accuracy(onset_tolerance=0.05)
@@ -426,7 +426,7 @@ def test(config_file):
     """.format(avg[0], avg[1], avg[2], avg[3], avg[4], avg[5], avg[6], avg[7], avg[8], avg[9], avg[10])
 
     # Save to a .txt file
-    file_path = '{}_res.txt'.format(config_file.split("/")[-1].split(".")[0])
+    file_path = '{}_res_reproduce.txt'.format(config_file.split("/")[-1].split(".")[0])
     with open(file_path, 'w') as f:
         f.write(output_str)
 
